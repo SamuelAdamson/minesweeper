@@ -1,3 +1,11 @@
+/* Poppings Font */
+@font-face {
+  font-family: 'Poppins';
+  src: url('~/lib/font/Poppins/Poppins-Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 14px;
 }
@@ -14,5 +22,15 @@ html {
 }
 
 body {
+  /*font-family: 'Poppins';*/ 
   margin-bottom: 60px;
+}
+
+
+
+/* Navbar */
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: larger;
 }

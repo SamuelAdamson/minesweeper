@@ -24,3 +24,4 @@ D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.dll
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\ref\minesweeper.dll
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.pdb
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.genruntimeconfig.cache
+D:\projects\minesweeper\minesweeper\minesweeper\bin\Debug\net6.0\web.config

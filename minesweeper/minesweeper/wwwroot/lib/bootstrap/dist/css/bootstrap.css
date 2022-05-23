@@ -3874,11 +3874,11 @@ textarea.form-control-lg {
 }
 
 .nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #0d6efd;
-  text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    display: block;
+    padding: 0.5rem 1.25rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
@@ -4066,8 +4066,10 @@ textarea.form-control-lg {
     position: absolute;
   }
   .navbar-expand-sm .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    /*padding-right: 0.5rem;
+    padding-left: 0.5rem;*/
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
   .navbar-expand-sm .navbar-nav-scroll {
     overflow: visible;
