@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MbQwhPFreVqwnO2a/9WBNFddwfuPQTm/QL8NeCDQeBA=",
+  "Hash": "eVFpZRxdLFLUQlbR3y/yuVqEKrw4ofudc857hyjcxyI=",
   "Source": "minesweeper",
   "BasePath": "_content/minesweeper",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\linkedin.png"
+    },
+    {
+      "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\outlook.png",
+      "SourceId": "minesweeper",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\",
+      "BasePath": "_content/minesweeper",
+      "RelativePath": "img/outlook.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\outlook.png"
     },
     {
       "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\youtube.png",

@@ -34,15 +34,17 @@ body {
 
 
 /* Footer */
-.footer .nav-link {
-    padding-top: 0;
-    padding-bottom: 0;
-    text-align: center;
-    font-size: larger;
-    cursor: pointer;
-    color: rgba(255,255,255,.55);
+.footer .foot-tag {
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(0,0,0,0.2);
 }
 
-.footer .nav-link:hover {
-    color: rgba(255,255,255,0.8);
+
+/* Grow Animation */
+.grow{
+    transform: scale(1);
+    transition: all ease 0.3s;
+}
+.grow:hover {
+    transform: scale(1.05);
 }
