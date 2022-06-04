@@ -1,10 +1,7 @@
-/* Poppings Font */
-@font-face {
-  font-family: 'Poppins';
-  src: url('~/lib/font/Poppins/Poppins-Medium.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
+/* 
+   Samuel Adamson
+   Site Styling
+*/
 
 html {
   font-size: 14px;
@@ -22,7 +19,7 @@ html {
 }
 
 body {
-  /*font-family: 'Poppins';*/ 
+  font-family: 'Poppins';
   margin-bottom: 60px;
 }
 
@@ -33,4 +30,19 @@ body {
     padding-right: 1rem;
     padding-left: 1rem;
     font-size: larger;
+}
+
+
+/* Footer */
+.footer .nav-link {
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    font-size: larger;
+    cursor: pointer;
+    color: rgba(255,255,255,.55);
+}
+
+.footer .nav-link:hover {
+    color: rgba(255,255,255,0.8);
 }

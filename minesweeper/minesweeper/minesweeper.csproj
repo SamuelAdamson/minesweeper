@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\font\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>

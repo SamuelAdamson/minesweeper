@@ -1,0 +1,12 @@
+﻿/* 
+   Samuel Adamson
+   Font Styling
+*/
+
+/* Poppings Font */
+@font-face {
+    font-family: 'Poppins';
+    src: url(../lib/font/Poppins/Poppins-Medium.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
