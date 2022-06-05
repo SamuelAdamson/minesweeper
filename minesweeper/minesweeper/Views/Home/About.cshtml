@@ -19,7 +19,7 @@
         <p>
             The player is able to flag cells that they believe to be hiding a mine. In this version of minesweeper, the user can double click 
             a previously uncovered cell to uncover all adjacent cells that are not flagged as mines. However, if that cell is adjacent to more
-            flags than it is mines, this functionality will not work in order to protect the player from misclicks. (TODO EXAMPLE PICTURE)
+            flags than it is mines, this functionality will not work in order to protect the player from misclicks.
         </p>
     </div>
     
@@ -34,18 +34,20 @@
             to the source, are considered to be <i>nearby</i> and will be uncovered. We can refer to this set of directly adjacent cells as
             <strong>layer 1</strong>. 
         </p>
+        <img src="~/img/layer1.png" alt="layer1" />
         <p>
             To continue our search for <i>nearby</i> cells, we evaluate all cells that are adjacent to layer 1. In order to consider this group of cells 
             <i>nearby</i> with respect to our source, they must meet two requirements. Firstly, each cell must not already be included in layer 1 (or be the source itself). 
             Secondly, each cell must not be hiding a mine. <strong>Layer 2</strong> is comprised of all cells that are adjacent to layer 1 and satisfy these two conditions. 
             All cells in layer 2 are considered <i>nearby</i> and will be uncovered.
         </p>
+        <img src="~/img/layer2.png" alt="layer2" />
         <p>
             From this point forward, our search for <i>nearby</i> cells becomes rather repetitve. To find <strong>layer 3</strong>, we evaluate cells adjacent to layer 2 which 
             are not already included in previously established layers and are not hiding a mine. To find <strong>layer 4</strong>, we complete the same evaluation for cells 
             adjacent to layer 3. To find <strong>layer n</strong>, we complete the same evaluation for cells adjacent to <strong>layer n-1</strong>.
         </p>
-
+        <img src="~/img/layer3.png" alt="layer2" />
     </div>
 
     <div class="d-flex align-items-center flex-column pe-4 ps-4">
