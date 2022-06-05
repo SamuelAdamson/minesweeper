@@ -4,9 +4,55 @@
 -->
 
 @{
-    ViewData["Title"] = "About Page";
+    ViewData["Title"] = "about";
 }
 
-<div class="text-center">
-    <h1 class="display-4">About</h1>
+<div class="about">
+    <div class="d-flex align-items-center flex-column pe-4 ps-4">
+        <h1 class="display-4 pt-3 pb-1"> the game </h1>
+        <p> 
+            Minesweeper involves a grid of cells where some cells have hidden mines and others do not. The player's objective
+            is to uncover all cells that are not hiding a mine. If the player uncovers a cell that is hiding a mine, the player loses. 
+            To assist the player in discovering the mineless cells, each uncovered cell shows the number of adjacent cells that are hiding 
+            mines. It will never be the case that the first cell a player selects is hiding a mine.
+        </p>
+        <p>
+            The player is able to flag cells that they believe to be hiding a mine. In this version of minesweeper, the user can double click 
+            a previously uncovered cell to uncover all adjacent cells that are not flagged as mines. However, if that cell is adjacent to more
+            flags than it is mines, this functionality will not work in order to protect the player from misclicks. (TODO EXAMPLE PICTURE)
+        </p>
+    </div>
+    
+    <div class="d-flex align-items-center flex-column pe-4 ps-4">
+        <h1 class="display-4 pt-3 pb-1"> the algorithm </h1>
+        <p>
+            If the player uncovers a cell which is not adjacent to any mines, all nearby cells will also be automatically uncovered. Let's define <i>nearby</i> 
+            in this statement. 
+        </p>
+        <p>
+            For the purposes of this description, we will refer to the originally selected cell as the <strong>source</strong>. All mines that are directly adjacent
+            to the source, are considered to be <i>nearby</i> and will be uncovered. We can refer to this set of directly adjacent cells as
+            <strong>layer 1</strong>. 
+        </p>
+        <p>
+            To continue our search for <i>nearby</i> cells, we evaluate all cells that are adjacent to layer 1. In order to consider this group of cells 
+            <i>nearby</i> with respect to our source, they must meet two requirements. Firstly, each cell must not already be included in layer 1 (or be the source itself). 
+            Secondly, each cell must not be hiding a mine. <strong>Layer 2</strong> is comprised of all cells that are adjacent to layer 1 and satisfy these two conditions. 
+            All cells in layer 2 are considered <i>nearby</i> and will be uncovered.
+        </p>
+        <p>
+            From this point forward, our search for <i>nearby</i> cells becomes rather repetitve. To find <strong>layer 3</strong>, we evaluate cells adjacent to layer 2 which 
+            are not already included in previously established layers and are not hiding a mine. To find <strong>layer 4</strong>, we complete the same evaluation for cells 
+            adjacent to layer 3. To find <strong>layer n</strong>, we complete the same evaluation for cells adjacent to <strong>layer n-1</strong>.
+        </p>
+
+    </div>
+
+    <div class="d-flex align-items-center flex-column pe-4 ps-4">
+        <h1 class="display-4 pt-3 pb-1"> the developer </h1>
+        <p> 
+            My name is Samuel Adamson. I am a undergraduate Computer Science student at the University of Colorado.
+            In my freetime, I am an avid 
+        </p>
+    </div>
 </div>

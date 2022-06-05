@@ -20,7 +20,6 @@ html {
 
 body {
   font-family: 'Poppins';
-  margin-bottom: 60px;
 }
 
 
@@ -30,13 +29,25 @@ body {
     padding-right: 1rem;
     padding-left: 1rem;
     font-size: larger;
+    text-align: center;
 }
 
 
 /* Footer */
+.footer {
+    position: relative!important;
+}
+
 .footer .foot-tag {
     color: rgba(255,255,255,0.8);
     background-color: rgba(0,0,0,0.2);
+}
+
+/* About Page */
+.about {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -48,3 +59,4 @@ body {
 .grow:hover {
     transform: scale(1.05);
 }
+

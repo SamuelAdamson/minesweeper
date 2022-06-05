@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/font.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/minesweeper.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid justify-content-center">
@@ -25,22 +25,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">minesweeper.</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">minesweeper</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">about.</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- External link -->
-                            <a class="nav-link" href="https://samueladamson.github.io/#/" target="_blank" rel="noopener noreferrer">portfolio.</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">about</a>
                         </li>
                         <li class="nav-item">
                             <!-- External link -->
-                            <a class="nav-link" href="https://www.linkedin.com/in/samuel-adamson-cs/" target="_blank" rel="noopener noreferrer">linkedin.</a>
+                            <a class="nav-link" href="https://samueladamson.github.io/#/" target="_blank" rel="noopener noreferrer">portfolio</a>
                         </li>
                         <li class="nav-item">
                             <!-- External link -->
-                            <a class="nav-link" href="https://github.com/SamuelAdamson" target="_blank" rel="noopener noreferrer">github.</a>
+                            <a class="nav-link" href="https://www.linkedin.com/in/samuel-adamson-cs/" target="_blank" rel="noopener noreferrer">linkedin</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- External link -->
+                            <a class="nav-link" href="https://github.com/SamuelAdamson" target="_blank" rel="noopener noreferrer">github</a>
                         </li>
                     </ul>
                 </div>
@@ -53,7 +53,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer bg-dark">
+    <footer class="mt-auto footer bg-dark">
         <div class="container p-3 pb-0">
             <section class="mb-4">
                 <div class="d-flex flex-wrap justify-content-center">
