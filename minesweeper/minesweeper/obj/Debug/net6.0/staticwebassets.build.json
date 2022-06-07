@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZEhOtDUxz0eIgXZC1qsQLom+5jzI5OJkwUufXbb6Lw0=",
+  "Hash": "+GXB9AHrSfTnVa7oRbD4OApPyH7jpmO9F8vxocMtaaQ=",
   "Source": "minesweeper",
   "BasePath": "_content/minesweeper",
   "Mode": "Default",
@@ -119,6 +119,23 @@
       "OriginalItemSpec": "wwwroot\\img\\bfs.gif"
     },
     {
+      "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\dfs.gif",
+      "SourceId": "minesweeper",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\",
+      "BasePath": "_content/minesweeper",
+      "RelativePath": "img/dfs.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\dfs.gif"
+    },
+    {
       "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\github.png",
       "SourceId": "minesweeper",
       "SourceType": "Discovered",
@@ -185,23 +202,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\layer2.png"
-    },
-    {
-      "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\layer3.png",
-      "SourceId": "minesweeper",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\",
-      "BasePath": "_content/minesweeper",
-      "RelativePath": "img/layer3.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\layer3.png"
     },
     {
       "Identity": "D:\\projects\\minesweeper\\minesweeper\\minesweeper\\wwwroot\\img\\linkedin.png",

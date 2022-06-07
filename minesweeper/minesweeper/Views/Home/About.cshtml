@@ -9,7 +9,7 @@
 
 <div class="about">
     <div class="d-flex align-items-center flex-column pe-4 ps-4">
-        <h1 class="display-4 pt-3 pb-1"> the game </h1>
+        <h1 class="display-2 pt-3 pb-1"> the game </h1>
         <p> 
             Minesweeper involves a grid of cells where some cells have hidden mines and others do not. The player's objective
             is to uncover all cells that are not hiding a mine. If the player uncovers a cell that is hiding a mine, the player loses. 
@@ -24,44 +24,50 @@
     </div>
     
     <div class="d-flex align-items-center flex-column pe-4 ps-4">
-        <h1 class="display-4 pt-3 pb-1"> the algorithm </h1>
+        <h1 class="display-2 pt-3 pb-1"> the algorithm </h1>
         <p>
             If the player uncovers a cell which is not adjacent to any mines, all nearby cells will also be automatically uncovered. Let's define <i>nearby</i> 
             in this statement. 
         </p>
         <p>
             For the purposes of this description, we will refer to the originally selected cell as the <strong>source</strong>. All mines that are directly adjacent
-            to the source, are considered to be <i>nearby</i> and will be uncovered. We can refer to this set of directly adjacent cells as
-            <strong>layer 1</strong>. 
+            to the source, are considered to be <i>nearby</i> and will be uncovered. 
         </p>
         <img src="~/img/layer1.png" alt="layer1" />
         <p>
-            To continue our search for <i>nearby</i> cells, we evaluate all cells that are adjacent to layer 1. In order to consider this group of cells 
-            <i>nearby</i> with respect to our source, they must meet two requirements. Firstly, each cell must not already be included in layer 1 (or be the source itself). 
-            Secondly, each cell must not be hiding a mine. <strong>Layer 2</strong> is comprised of all cells that are adjacent to layer 1 and satisfy these two conditions. 
-            All cells in layer 2 are considered <i>nearby</i> and will be uncovered.
+            Now our definition of <i>nearby</i> cells does not stop here. Let's consider the case that one of these newly uncovered cells is similar to the source in that 
+            all of its directly adjacent neighbors are not mines. In this case, we can consider this cell to be a <strong>new source</strong> cell. All of the cells 
+            directly adjacent to the new source cell are considered to be <i>nearby</i> and will be uncovered.
         </p>
         <img src="~/img/layer2.png" alt="layer2" />
         <p>
-            From this point forward, our search for <i>nearby</i> cells becomes rather repetitve. To find <strong>layer 3</strong>, we evaluate cells adjacent to layer 2 which 
-            are not already included in previously established layers and are not hiding a mine. To find <strong>layer 4</strong>, we complete the same evaluation for cells 
-            adjacent to layer 3. To find <strong>layer n</strong>, we complete the same evaluation for cells adjacent to <strong>layer n-1</strong>.
-        </p>
-        <img src="~/img/layer3.png" alt="layer2" />
-        <p>
-            So, how do we implement our search for <i>nearby</i> cells? There are two main approaches we can take - breadth-first search (BFS) and depth-first search (DFS).
+            From this point forward, our search for <i>nearby</i> cells becomes rather repetitive. Each new cell that is uncovered becomes a new source if it satisfies
+            the condition that none of its directly adjacent neighbors are mines.
         </p>
         <p>
-            BFS
+            So, let's recap. In the framing of a divide-and-conquer algorithm, we need to break our problem down into smaller tasks. The small task in this case is to check 
+            that a cell is not adjacent to any mines. If this condition is met, we need to traverse each of its directly adjacent neighbors and perform the same check for each 
+            of those cells. We can choose between two methods to perform this traversal.
+        </p>
+        <h4 class="display-6 pt-3"> bfs </h4>
+        <p>
+            <strong>Breadth-first search</strong> (BFS) is a traversal where we start at a source node and search all connected nodes in <strong>layers</strong>. 
+            The first layer is the set of nodes that are directly connected to the source, the second layer is the set of nodes that are directly connected to the first layer, 
+            and so on until we are out of connected nodes. In the context of minesweeper, cells are connected by adjacency. Using BFS, we first visit the cells that are 
+            directly adjacent to the source - the <strong>first layer</strong>. The <strong>second layer</strong> would be all cells directly adjacent to the
+            first layer, the <strong>third layer</strong> would be all cells directly adjacent to the second layer, etc. Here's how our BFS would look if there were no
+            mines on the board.
         </p>
         <img src="~/img/bfs.gif" alt="bfs" />
+        <h4 class="display-6 pt-3"> dfs </h4>
         <p>
-            DFS
+            Our second option is <strong>depth-first search</strong> (DFS).
         </p>
+        <img src="~/img/dfs.gif" alt="dfs" />
     </div>
 
     <div class="d-flex align-items-center flex-column pe-4 ps-4">
-        <h1 class="display-4 pt-3 pb-1"> the developer </h1>
+        <h1 class="display-2 pt-3 pb-1"> the developer </h1>
         <p> 
             My name is Samuel Adamson. I am a undergraduate Computer Science student at the University of Colorado.
             In my freetime, I am an avid 
