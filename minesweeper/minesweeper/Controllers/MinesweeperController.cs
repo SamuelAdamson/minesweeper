@@ -4,11 +4,11 @@ using System.Diagnostics;
 
 namespace minesweeper.Controllers
 {
-    public class HomeController : Controller
+    public class MinesweeperController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MinesweeperController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public MinesweeperController(ILogger<MinesweeperController> logger)
         {
             _logger = logger;
         }
@@ -17,7 +17,6 @@ namespace minesweeper.Controllers
         {
             return View();
         }
-
         public IActionResult About()
         {
             return View();
