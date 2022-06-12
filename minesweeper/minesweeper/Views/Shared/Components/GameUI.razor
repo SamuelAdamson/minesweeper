@@ -1,0 +1,11 @@
+﻿@using minesweeper.Views.Shared.Components
+@using Models;
+
+<div Class="GameUI">
+	<CellUI Cell_="@tempCell" />
+</div>
+
+@code {
+	// Temp
+	Cell tempCell = new Cell(0, 0);
+}

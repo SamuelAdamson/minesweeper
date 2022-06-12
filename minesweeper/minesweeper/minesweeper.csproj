@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Minesweeper\Components\" />
     <Folder Include="wwwroot\lib\font\" />
   </ItemGroup>
 

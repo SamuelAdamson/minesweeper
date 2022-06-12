@@ -15,6 +15,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\projects\minesweeper\minesweeper\minesweeper
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Shared/Components/GameUI.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcR2FtZVVJLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Shared/Components/TimerUI.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVGltZXJVSS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projects/minesweeper/minesweeper/minesweeper/wwwroot/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = d3d3cm9vdFxfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Shared/Components/CellUI.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2VsbFVJLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-scrue1budg
+
 [D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQWJvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,3 +1,21 @@
+/* _content/minesweeper/Views/Shared/Components/CellUI.razor.rz.scp.css */
+.cell[b-scrue1budg] {
+    border: 2px solid rgb(137, 148, 153);
+    height: 50px;
+    width: 50px;
+    transition: background-color ease 0.3s;
+}
+.cell.covered[b-scrue1budg] {
+    background-color: rgba(137, 148, 153, 0.7);
+    cursor: pointer;
+}
+.cell.covered:hover[b-scrue1budg] {
+    background-color: rgba(137, 148, 153, 1);
+}
+.cell.uncovered[b-scrue1budg] {
+    background-color: rgba(192, 192, 192, 0.2);
+    cursor: default;
+}
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

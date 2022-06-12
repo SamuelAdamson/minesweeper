@@ -19,7 +19,8 @@ html {
 }
 
 body {
-  font-family: 'Poppins';
+    font-family: 'Poppins';
+    background-color: rgba(192, 192, 192, 0.2);
 }
 
 
@@ -46,7 +47,7 @@ body {
 /* About Page */
 .about {
     max-width: 1024px;
-    margin-left: auto;
+    margin-left: auto; 
     margin-right: auto;
 }
 .about img {

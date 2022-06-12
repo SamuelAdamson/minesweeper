@@ -10,7 +10,7 @@ namespace minesweeper.Models
     {
         // Properties of cell
         bool mine; // Is this cell a mine
-        bool revealed; // Is the cell revealed
+        bool covered; // Is the cell covered
         int adjacent; // Number of adjacent mines
         int row, col; // Coordinates of cell in grid
 
@@ -27,9 +27,12 @@ namespace minesweeper.Models
 
             // Initialize properties
             mine = false;
-            revealed = false;
+            covered = true;
             adjacent = 0;
         }
 
+        // Access controlled
+        public bool Covered { get => covered; set => covered = value; }
+        public bool Mine { get => mine; set => mine = value; }
     }
 }

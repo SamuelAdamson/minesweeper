@@ -1,0 +1,43 @@
+﻿@*
+	Cell UI Component
+	Samuel Adamson
+*@
+@using Microsoft.AspNetCore.Components.Web;
+@using Models;
+
+@* Cell *@
+<div @onmouseup="HandleMouseUp" class="cell @CellStatus">
+	
+</div>
+
+@code {
+	// Corresponding cell object
+	[Parameter]
+	public Cell Cell_ { get; set; }
+
+	// Clicked vs not clicked
+	string CellStatus = "covered";
+
+	/// <summary>
+	/// Handle Mouse
+	/// </summary>
+	/// <param name="args"></param>
+	private void HandleMouseUp(MouseEventArgs args)
+	{
+		if(Cell_.Covered) // First ensure that button is covered
+		{
+			if(args.Button == 0) // Left Click
+			{
+				// Set cell content
+
+				// Set cell status
+				Cell_.Covered = true;
+				CellStatus = "uncovered";
+			}
+			else if(args.Button == 2) // Right Click
+			{
+
+			}	
+		}
+	}
+}

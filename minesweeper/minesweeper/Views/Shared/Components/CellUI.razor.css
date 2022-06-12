@@ -1,0 +1,17 @@
+﻿.cell {
+    border: 2px solid rgb(137, 148, 153);
+    height: 50px;
+    width: 50px;
+    transition: background-color ease 0.3s;
+}
+.cell.covered {
+    background-color: rgba(137, 148, 153, 0.7);
+    cursor: pointer;
+}
+.cell.covered:hover {
+    background-color: rgba(137, 148, 153, 1);
+}
+.cell.uncovered {
+    background-color: rgba(192, 192, 192, 0.2);
+    cursor: default;
+}

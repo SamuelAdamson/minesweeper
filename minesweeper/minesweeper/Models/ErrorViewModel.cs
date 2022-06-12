@@ -1,3 +1,8 @@
+/*  Error View Model
+ *      - Error View Handling Model
+ *  Samuel Adamson 
+ */
+
 namespace minesweeper.Models
 {
     public class ErrorViewModel
