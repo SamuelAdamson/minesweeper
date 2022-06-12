@@ -5,6 +5,7 @@
  *  Samuel Adamson 
  */
 
+using minesweeper.Views.Shared.Components;
 namespace minesweeper.Models
 {
     public class Game

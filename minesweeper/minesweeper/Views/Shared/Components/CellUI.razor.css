@@ -1,17 +1,29 @@
 ﻿.cell {
-    border: 2px solid rgb(137, 148, 153);
     height: 50px;
     width: 50px;
-    transition: background-color ease 0.3s;
+    background-color: rgba(137, 148, 153, 0.8);
+    transition: all ease 0.3s;
 }
 .cell.covered {
-    background-color: rgba(137, 148, 153, 0.7);
+    filter: brightness(70%);
     cursor: pointer;
 }
 .cell.covered:hover {
-    background-color: rgba(137, 148, 153, 1);
+    filter: brightness(40%);
 }
 .cell.uncovered {
-    background-color: rgba(192, 192, 192, 0.2);
+    background-color: rgba(137, 148, 153, 0.45);
     cursor: default;
+}
+.cell.uncovered.one { /* One Adjacent */
+    
+}
+.cell.uncovered.two { /* Two Adjacent */
+
+}
+.cell.uncovered.three { /* Three Adjacent */
+
+}
+.cell.uncovered.fourplus { /* Four or more Adjacent */
+
 }

@@ -2,10 +2,14 @@
 @using Models;
 
 <div Class="GameUI">
-	<CellUI Cell_="@tempCell" />
+	<ModeUI />
+	<div class="Grid">
+		<CellUI />
+		<CellUI />
+	</div>
+	<TimerUI />
 </div>
 
 @code {
 	// Temp
-	Cell tempCell = new Cell(0, 0);
 }

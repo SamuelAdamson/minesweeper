@@ -3,20 +3,24 @@
 	Samuel Adamson
 *@
 @using Microsoft.AspNetCore.Components.Web;
-@using Models;
 
 @* Cell *@
-<div @onmouseup="HandleMouseUp" class="cell @CellStatus">
+<div oncontextmenu="return false;" @onmouseup="HandleMouseUp" class="cell @CellStatus m-1 p-1">
 	
 </div>
 
 @code {
-	// Corresponding cell object
-	[Parameter]
-	public Cell Cell_ { get; set; }
-
 	// Clicked vs not clicked
 	string CellStatus = "covered";
+	bool covered = true;
+
+	// Flagged vs not flagged
+	bool flagged = false;
+
+	// Events
+	public event EventHandler<EventArgs> Uncover; // Uncover event
+	public event EventHandler<EventArgs> Flag; // Flag event
+	public event EventHandler<EventArgs> Unflag; // Unflag event
 
 	/// <summary>
 	/// Handle Mouse
@@ -24,19 +28,27 @@
 	/// <param name="args"></param>
 	private void HandleMouseUp(MouseEventArgs args)
 	{
-		if(Cell_.Covered) // First ensure that button is covered
+		if(covered) // First ensure that button is covered
 		{
 			if(args.Button == 0) // Left Click
 			{
-				// Set cell content
+				// Raise uncover event
 
 				// Set cell status
-				Cell_.Covered = true;
 				CellStatus = "uncovered";
+				covered = false;
 			}
 			else if(args.Button == 2) // Right Click
 			{
-
+				if(!flagged)
+				{
+					// Raise flag event
+					// Update flagged if we have flags left
+				}
+				else
+				{
+					// Raise unflag event
+				}
 			}	
 		}
 	}

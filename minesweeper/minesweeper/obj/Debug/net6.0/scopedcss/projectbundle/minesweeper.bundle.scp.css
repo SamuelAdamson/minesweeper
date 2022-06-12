@@ -1,21 +1,34 @@
 /* _content/minesweeper/Views/Shared/Components/CellUI.razor.rz.scp.css */
 .cell[b-scrue1budg] {
-    border: 2px solid rgb(137, 148, 153);
     height: 50px;
     width: 50px;
-    transition: background-color ease 0.3s;
+    background-color: rgba(137, 148, 153, 0.8);
+    transition: all ease 0.3s;
 }
 .cell.covered[b-scrue1budg] {
-    background-color: rgba(137, 148, 153, 0.7);
+    filter: brightness(70%);
     cursor: pointer;
 }
 .cell.covered:hover[b-scrue1budg] {
-    background-color: rgba(137, 148, 153, 1);
+    filter: brightness(40%);
 }
 .cell.uncovered[b-scrue1budg] {
-    background-color: rgba(192, 192, 192, 0.2);
+    background-color: rgba(137, 148, 153, 0.45);
     cursor: default;
 }
+.cell.uncovered.one[b-scrue1budg] { /* One Adjacent */
+    
+}
+.cell.uncovered.two[b-scrue1budg] { /* Two Adjacent */
+
+}
+.cell.uncovered.three[b-scrue1budg] { /* Three Adjacent */
+
+}
+.cell.uncovered.fourplus[b-scrue1budg] { /* Four or more Adjacent */
+
+}
+/* _content/minesweeper/Views/Shared/Components/GameUI.razor.rz.scp.css */
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

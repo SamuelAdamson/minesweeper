@@ -4,6 +4,7 @@
  *  Samuel Adamson 
  */
 
+using minesweeper.Views.Shared.Components;
 namespace minesweeper.Models
 {
     public class Cell
@@ -13,6 +14,7 @@ namespace minesweeper.Models
         bool covered; // Is the cell covered
         int adjacent; // Number of adjacent mines
         int row, col; // Coordinates of cell in grid
+        //CellUI cellUI; // Corresponding UI
 
         /// <summary>
         /// Cell constructor
@@ -29,10 +31,33 @@ namespace minesweeper.Models
             mine = false;
             covered = true;
             adjacent = 0;
+
+            // Initialize cellUI
+            //cellUI = new CellUI();
+
+            // Subscribe to UI events
+            //cellUI.
         }
 
         // Access controlled
         public bool Covered { get => covered; set => covered = value; }
         public bool Mine { get => mine; set => mine = value; }
+        // public CellUI CellUI { get => cellUI; }
+
+
+        void HandleUncover()
+        {
+
+        }
+
+        void HandleFlag()
+        {
+
+        }
+
+        void HandleUnflag()
+        {
+
+        }
     }
 }
