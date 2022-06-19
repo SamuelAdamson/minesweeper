@@ -3,8 +3,8 @@
  *      - Model class - hidden from frontend
  *  Samuel Adamson 
  */
-
 using minesweeper.Views.Shared.Components;
+using minesweeper.Models.CustomEventArgs;
 namespace minesweeper.Models
 {
     public class Cell
@@ -14,7 +14,9 @@ namespace minesweeper.Models
         bool covered; // Is the cell covered
         int adjacent; // Number of adjacent mines
         int row, col; // Coordinates of cell in grid
-        //CellUI cellUI; // Corresponding UI
+
+        // GUI Component
+        CellUI cellUI;
 
         /// <summary>
         /// Cell constructor
@@ -32,30 +34,30 @@ namespace minesweeper.Models
             covered = true;
             adjacent = 0;
 
-            // Initialize cellUI
-            //cellUI = new CellUI();
-
-            // Subscribe to UI events
-            //cellUI.
+            // Initialize CellUI and subscribe to events
+            cellUI = new CellUI();
+            cellUI.Uncover += HandleUncover;
+            cellUI.Flag += HandleFlag;
+            cellUI.Unflag += HandleUnflag;
         }
 
         // Access controlled
-        public bool Covered { get => covered; set => covered = value; }
+        public bool Covered { get => covered; }
         public bool Mine { get => mine; set => mine = value; }
-        // public CellUI CellUI { get => cellUI; }
+        public int Adjacent { get => adjacent; }
+        public CellUI CellUI { get => cellUI; }
 
-
-        void HandleUncover()
+		void HandleUncover(object? sender, CellEventArgs e)
         {
 
         }
 
-        void HandleFlag()
+        void HandleFlag(object? sender, CellEventArgs e)
         {
 
         }
 
-        void HandleUnflag()
+        void HandleUnflag(object? sender, CellEventArgs e)
         {
 
         }

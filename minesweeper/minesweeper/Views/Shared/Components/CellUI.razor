@@ -3,6 +3,7 @@
 	Samuel Adamson
 *@
 @using Microsoft.AspNetCore.Components.Web;
+@using minesweeper.Models.CustomEventArgs;
 
 @* Cell *@
 <div oncontextmenu="return false;" @onmouseup="HandleMouseUp" class="cell @CellStatus m-1 p-1">
@@ -18,9 +19,10 @@
 	bool flagged = false;
 
 	// Events
-	public event EventHandler<EventArgs> Uncover; // Uncover event
-	public event EventHandler<EventArgs> Flag; // Flag event
-	public event EventHandler<EventArgs> Unflag; // Unflag event
+	public event EventHandler<CellEventArgs>? Uncover; // Uncover event
+	public event EventHandler<CellEventArgs>? Flag; // Flag event
+	public event EventHandler<CellEventArgs>? Unflag; // Unflag event
+
 
 	/// <summary>
 	/// Handle Mouse
@@ -32,24 +34,72 @@
 		{
 			if(args.Button == 0) // Left Click
 			{
-				// Raise uncover event
-
-				// Set cell status
-				CellStatus = "uncovered";
-				covered = false;
+				// Uncover Cell
+				RaiseUncoverEvent();
 			}
 			else if(args.Button == 2) // Right Click
 			{
 				if(!flagged)
 				{
-					// Raise flag event
-					// Update flagged if we have flags left
+					// Flag Cell
+					RaiseFlagEvent();
 				}
 				else
 				{
-					// Raise unflag event
+					// Unflag Cell
+					RaiseUnflagEvent();
 				}
 			}	
 		}
+	}
+
+
+	/// <summary>
+	/// Raise Uncover Event
+	/// </summary>
+	protected virtual void RaiseUncoverEvent()
+	{
+		Uncover?.Invoke(this, new CellEventArgs("Cell Uncovered!"));
+	}
+
+	/// <summary>
+	/// Raise Flag Event
+	/// </summary>
+	protected virtual void RaiseFlagEvent()
+	{
+		Flag?.Invoke(this, new CellEventArgs("Cell Flagged!"));
+	}
+
+	/// <summary>
+	/// Raise Unflag Event
+	/// </summary>
+	protected virtual void RaiseUnflagEvent()
+	{
+		Unflag?.Invoke(this, new CellEventArgs("Cell Unflagged!"));
+	}
+
+	/// <summary>
+	/// Uncover UI side implementation
+	/// </summary>
+	/// <param name="adjacentNum"> Number of Adjacent Cells </param>
+	public void UncoverUI(string adjacentNum) {
+		CellStatus = $"uncovered {adjacentNum}";
+		covered = false;
+	}
+
+	/// <summary>
+	/// Flag Cell on UI Side
+	/// </summary>
+	public void FlagUI()
+	{
+		CellStatus = "covered flag";
+	}
+
+	/// <summary>
+	/// Unflag Cell on UI Side
+	/// </summary>
+	public void UnflagUI()
+	{
+		CellStatus = "covered";
 	}
 }

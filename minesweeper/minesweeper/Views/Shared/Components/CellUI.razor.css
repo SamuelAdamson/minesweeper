@@ -16,14 +16,14 @@
     cursor: default;
 }
 .cell.uncovered.one { /* One Adjacent */
-    
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.two { /* Two Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.three { /* Three Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.fourplus { /* Four or more Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }

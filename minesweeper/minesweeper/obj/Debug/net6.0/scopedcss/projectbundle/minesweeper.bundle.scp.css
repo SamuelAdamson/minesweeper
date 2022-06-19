@@ -17,18 +17,25 @@
     cursor: default;
 }
 .cell.uncovered.one[b-scrue1budg] { /* One Adjacent */
-    
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.two[b-scrue1budg] { /* Two Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.three[b-scrue1budg] { /* Three Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }
 .cell.uncovered.fourplus[b-scrue1budg] { /* Four or more Adjacent */
-
+    background-color: rgba(137, 148, 153, 0.45);
 }
 /* _content/minesweeper/Views/Shared/Components/GameUI.razor.rz.scp.css */
+.GameUI[b-8w0w4lsmdq] {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* _content/minesweeper/Views/Shared/Components/ModeUI.razor.rz.scp.css */
+
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
