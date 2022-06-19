@@ -45,9 +45,6 @@
     padding-left: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    border: 2px solid rgba(0,0,0,0.7);
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
     transition: all ease 0.5s;
 }
 .btn.mode.unselected[b-owwulud4a8] {
@@ -57,7 +54,26 @@
 .btn.mode.selected[b-owwulud4a8],
 .btn.mode:hover[b-owwulud4a8] {
     background-color: rgba(0,0,0,0.7);
-    color: rgba(255,255,255,0.9);
+    color: rgb(255,255,255);
+}
+/* _content/minesweeper/Views/Shared/Components/TimerUI.razor.rz.scp.css */
+.time[b-chiidnwdd1] {
+    padding: 1rem;
+}
+.pause[b-chiidnwdd1] {
+    height: fit-content;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: larger;
+    border: 2px solid rgba(0,0,0,0.7);
+    color: rgba(0,0,0,0.7);
+    transition: all ease 0.5s;
+}
+.pause:hover[b-chiidnwdd1] {
+    background-color: rgba(0,0,0,0.7);
+    color: rgb(255,255,255);
 }
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification

@@ -9,9 +9,6 @@
     padding-left: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    border: 2px solid rgba(0,0,0,0.7);
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
     transition: all ease 0.5s;
 }
 .btn.mode.unselected {
@@ -21,5 +18,5 @@
 .btn.mode.selected,
 .btn.mode:hover {
     background-color: rgba(0,0,0,0.7);
-    color: rgba(255,255,255,0.9);
+    color: rgb(255,255,255);
 }
