@@ -30,12 +30,35 @@
 }
 /* _content/minesweeper/Views/Shared/Components/GameUI.razor.rz.scp.css */
 .GameUI[b-8w0w4lsmdq] {
-    width: auto;
     margin-left: auto;
     margin-right: auto;
 }
 /* _content/minesweeper/Views/Shared/Components/ModeUI.razor.rz.scp.css */
+.ModeUI[b-owwulud4a8] {
+    padding: 1rem;
+}
 
+.btn.mode[b-owwulud4a8] {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border: 2px solid rgba(0,0,0,0.7);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    transition: all ease 0.5s;
+}
+.btn.mode.unselected[b-owwulud4a8] {
+    background-color: transparent;
+    color: rgba(0,0,0,0.7);
+}
+.btn.mode.selected[b-owwulud4a8],
+.btn.mode:hover[b-owwulud4a8] {
+    background-color: rgba(0,0,0,0.7);
+    color: rgba(255,255,255,0.9);
+}
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
