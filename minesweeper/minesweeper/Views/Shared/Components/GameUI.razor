@@ -2,18 +2,51 @@
 	Game UI Component
 	Samuel Adamson
 *@
-@using minesweeper.Views.Shared.Components
-@using Models;
+@using minesweeper.Views.Shared.Components;
+@using minesweeper.Models.CustomEventArgs;
 
 <div Class="GameUI text-center">
-	<ModeUI />
+	<ModeUI @ref="modeSelector" />
 	<div class="Grid">
 		
 	</div>
-	<TimerUI />
+	<TimerUI @ref="timer" />
 </div>
 
 @code {
-	// Parameter
-	ModeUI modeSelector = new ModeUI();
+	// Properties
+	ModeUI modeSelector;
+	TimerUI timer;
+
+	/// <summary>
+	/// After Render
+	/// </summary>
+	/// <param name="firstRender"> First Render </param>
+	protected override void OnAfterRender(bool firstRender)
+	{
+		// Subscribe events
+		modeSelector.ModeChange += HandleModeChange;
+		timer.Pause += HandlePause;
+		timer.Unpause += HandleUnpause;
+	}
+
+
+	private void HandleModeChange(object? sender, ModeEventArgs me)
+	{
+		// Reset timer
+		timer.ResetTime();
+		// TODO Load board
+		// timer.StartTime();
+	}
+
+	private void HandlePause(object? sender, PauseEventArgs pe)
+	{
+		System.Diagnostics.Debug.WriteLine(pe.Message);
+	}
+
+	private void HandleUnpause(object? sender, PauseEventArgs pe)
+	{
+		System.Diagnostics.Debug.WriteLine(pe.Message);
+	}
+
 }

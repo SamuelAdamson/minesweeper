@@ -15,6 +15,9 @@
 </div>
 
 @code {
+	// Events
+	public event EventHandler<ModeEventArgs>? ModeChange;
+
 	// Mode struct
 	private class Mode
 	{
@@ -54,9 +57,6 @@
 			new Mode("hard", false)
 		};
 	Mode selectedMode;
-
-	// Events
-	public event EventHandler<ModeEventArgs>? ModeChange;
 
 	/// <summary>
 	/// ModeUI Constructor

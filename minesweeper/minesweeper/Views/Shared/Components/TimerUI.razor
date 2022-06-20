@@ -7,22 +7,21 @@
 @using System.Threading;
 @implements IDisposable;
 
-<div class="TimerUI d-flex flex-row justify-content-center">
+<div class="TimerUI d-flex flex-row justify-content-between">
 	<h3 class="display-6 time">@timeElapsed</h3>
 	<button class="btn pause" @onclick="OnPause">@pauseMsg</button>
 </div>
 
 @code {
+	// Events
+	public event EventHandler<PauseEventArgs> Pause;
+	public event EventHandler<PauseEventArgs> Unpause;
 
 	// Declare timer
 	Timer gameTimer;
 	int gameTime, hours, minutes, seconds;
 	string timeElapsed, pauseMsg;
 	bool paused;
-
-	// Events
-	public event EventHandler<PauseEventArgs> Pause;
-	public event EventHandler<PauseEventArgs> Unpause;
 
 	/// <summary>
 	/// Constructor
@@ -31,14 +30,13 @@
 	{
 		// Set time
 		ResetTime();
-		SetTimeElapsed();
 
 		// Game not paused
 		paused = false;
 		pauseMsg = "pause";
 
-		// Create new game timer
-		NewTimer(1000);
+		// Start timer
+		StartTimer();
 	}
 
 	/// <summary>
@@ -122,9 +120,17 @@
 	/// </summary>
 	public void ResetTime()
 	{
+		// Dispose of old timer
+		Dispose();
+
+		// Reset values
+		gameTime = 0;
 		hours = 0;
 		minutes = 0;
 		seconds = 0;
+
+		// Reset Time Display
+		SetTimeElapsed();
 	}
 
 	/// <summary>
@@ -135,4 +141,11 @@
 		gameTimer?.Dispose();
 	}
 
+	/// <summary>
+	/// Start timer initially (1s due time)
+	/// </summary>
+	public void StartTimer()
+	{
+		NewTimer(1000);
+	}
 }

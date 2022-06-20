@@ -18,7 +18,7 @@ namespace minesweeper.Models
         int nRows, nCols;
         Cell[,] grid;
 
-        public Game()
+        public Game(string mode)
         {
             // TODO Update grid dimensions for repsonsiveness
             // Initialize number of cells
