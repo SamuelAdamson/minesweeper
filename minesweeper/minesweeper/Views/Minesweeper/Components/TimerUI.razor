@@ -28,16 +28,20 @@
 	/// </summary>
 	public TimerUI()
 	{
-		// Set time
-		ResetTime();
-
 		// Game not paused
 		paused = false;
 		pauseMsg = "pause";
 
+		// Initialize time string
+		timeElapsed = "00:00:00";
+
 		// Start timer
+		SetTimer();
 		StartTimer();
 	}
+
+	// Access control
+	public bool Paused { get => paused; }
 
 	/// <summary>
 	/// Create a new timer with duetime
@@ -53,14 +57,23 @@
 	/// </summary>
 	/// <param name="stateInfo"></param>
 	private void OnGameTimerTick(Object? stateInfo)
-	{
+	{	
 		// Update gametime
 		gameTime++;
 		hours = gameTime / 3600;
 		minutes = gameTime / 60;
 		seconds = gameTime % 60;
-		SetTimeElapsed();
 
+		// Set elapsed time and update state
+		SetTimeElapsed();
+	}
+
+	/// <summary>
+	/// Update time elapsed
+	/// </summary>
+	private void SetTimeElapsed()
+	{
+		timeElapsed = $"{hours.ToString("D2")}:{minutes.ToString("D2")}:{seconds.ToString("D2")}";
 		InvokeAsync(() => { StateHasChanged(); });
 	}
 
@@ -71,23 +84,15 @@
 	{
 		if(paused) // Check already Paused
 		{
-			// Set pause message and create new timer (start ticks)
-			NewTimer(500);
-			pauseMsg = "pause";
-			paused = false;
-
-			// Raise event
-			RaisePause();
+			// Unpause GUI and raise the unpause event
+			UnpauseUI();
+			RaiseUnpause();
 		}
 		else
-		{	
-			// Set pause message and dispose of timer (stop ticks)
-			Dispose();
-			paused = true;
-			pauseMsg = "unpause";
-
-			// Raise event
-			RaiseUnpause();
+		{
+			// Pause GUI and raise pause event
+			PauseUI();
+			RaisePause();
 		}
 	}
 
@@ -107,30 +112,52 @@
 		Unpause?.Invoke(this, new PauseEventArgs("Game Unpaused!"));
 	}
 
-	/// <summary>
-	/// Update time elapsed
-	/// </summary>
-	private void SetTimeElapsed()
+	public void UnpauseUI()
 	{
-		timeElapsed = $"{hours.ToString("D2")}:{minutes.ToString("D2")}:{seconds.ToString("D2")}";
+		// Set pause message and create new timer (start ticks)
+		NewTimer(500);
+		pauseMsg = "pause";
+		paused = false;
+	}
+
+	public void PauseUI()
+	{
+		// Set pause message and dispose of timer (stop ticks)
+		Dispose();
+		paused = true;
+		pauseMsg = "unpause";
 	}
 
 	/// <summary>
-	/// Reset time to 00:00:00
+	/// Set timer to 00:00:00
 	/// </summary>
-	public void ResetTime()
+	private void SetTimer()
 	{
-		// Dispose of old timer
-		Dispose();
-
 		// Reset values
 		gameTime = 0;
 		hours = 0;
 		minutes = 0;
 		seconds = 0;
+	}
 
-		// Reset Time Display
+	/// <summary>
+	/// Reset Timer to 00:00:00 and update elapsed time
+	/// </summary>
+	public void ResetTimer()
+	{
+		// Set timer values and set elapsed time
+		SetTimer();
 		SetTimeElapsed();
+	}
+
+	/// <summary>
+	/// Dispose old timer, start a new timer
+	/// </summary>
+	public void StartTimer()
+	{
+		// Dispose of old timer and create new one
+		Dispose();
+		NewTimer(500);
 	}
 
 	/// <summary>
@@ -139,13 +166,5 @@
 	public void Dispose()
 	{
 		gameTimer?.Dispose();
-	}
-
-	/// <summary>
-	/// Start timer initially (1s due time)
-	/// </summary>
-	public void StartTimer()
-	{
-		NewTimer(1000);
 	}
 }

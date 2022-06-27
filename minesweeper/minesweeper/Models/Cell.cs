@@ -3,8 +3,8 @@
  *      - Model class - hidden from frontend
  *  Samuel Adamson 
  */
-using minesweeper.Views.Shared.Components;
 using minesweeper.Models.CustomEventArgs;
+using minesweeper.Views.Minesweeper.Components;
 namespace minesweeper.Models
 {
     public class Cell
@@ -12,11 +12,9 @@ namespace minesweeper.Models
         // Properties of cell
         bool mine; // Is this cell a mine
         bool covered; // Is the cell covered
+        bool flagged; // Is the cell flagged
         int adjacent; // Number of adjacent mines
         int row, col; // Coordinates of cell in grid
-
-        // GUI Component
-        CellUI cellUI;
 
         /// <summary>
         /// Cell constructor
@@ -32,32 +30,37 @@ namespace minesweeper.Models
             // Initialize properties
             mine = false;
             covered = true;
+            flagged = false;
             adjacent = 0;
-
-            // Initialize CellUI and subscribe to events
-            cellUI = new CellUI();
-            cellUI.Uncover += HandleUncover;
-            cellUI.Flag += HandleFlag;
-            cellUI.Unflag += HandleUnflag;
         }
 
         // Access controlled
         public bool Covered { get => covered; }
-        public bool Mine { get => mine; set => mine = value; }
-        public int Adjacent { get => adjacent; }
-        public CellUI CellUI { get => cellUI; }
+        public bool Mine { get => mine; }
+        public bool Flagged { get => flagged; }
+        public int Adjacent { get => adjacent; set => adjacent = value; }
+        public int Row { get => row; }
+        public int Col { get => col; }
 
-		void HandleUncover(object? sender, CellEventArgs e)
+        /// <summary>
+        /// Handle uncovering of cell
+        /// </summary>
+        /// <param name="sender"> Sender </param>
+        /// <param name="e"> Args </param>
+        public void HandleUncover(object? sender, CellEventArgs e)
+        {
+            // Update covered
+            covered = false;
+
+            
+        }
+
+        public void HandleFlag(object? sender, CellEventArgs e)
         {
 
         }
 
-        void HandleFlag(object? sender, CellEventArgs e)
-        {
-
-        }
-
-        void HandleUnflag(object? sender, CellEventArgs e)
+        public void SetMine()
         {
 
         }

@@ -1,10 +1,10 @@
-﻿@using minesweeper.Views.Shared.Components
+﻿@using minesweeper.Views.Minesweeper.Components
 @{
     ViewData["Title"] = "minesweeper";
 }
 
 <div class="minesweeper">
     <div class="d-flex align-items-center flex-column pe-4 ps-4 mt-2">
-        <component type="typeof(GameUI)" render-mode="ServerPrerendered" />
+        <component type="typeof(Game)" render-mode="ServerPrerendered" />
     </div>
 </div>

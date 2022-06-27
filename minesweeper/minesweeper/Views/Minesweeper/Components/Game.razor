@@ -1,0 +1,93 @@
+﻿@*
+	Game UI Component
+	Samuel Adamson
+*@
+@using minesweeper.Models;
+@using minesweeper.Models.CustomEventArgs;
+
+<div Class="Game text-center">
+	<ModeUI @ref="modeSelector" />
+	<div class="Grid">
+		@for(int i = 0; i < game.NRows; i++)
+		{
+			<div class="row cell-row"> 
+			@for(int j = 0; j < game.NCols; j++)
+			{
+				<CellUI />
+			}
+			</div>
+		}
+	</div>
+	<TimerUI @ref="timer" />
+</div>
+
+@code {
+	// Properties
+	ModeUI modeSelector;
+	TimerUI timer;
+	CellUI[,] cellUIs;
+
+	// Game reference
+	Minesweeper game;
+
+	public Game()
+	{
+		// Create new game
+		game = new Minesweeper("medium");
+	}
+
+	/// <summary>
+	/// After Render
+	/// </summary>
+	/// <param name="firstRender"> First Render </param>
+	protected override void OnAfterRender(bool firstRender)
+	{
+		// Subscribe events
+		modeSelector.ModeChange += HandleModeChange;
+		timer.Pause += HandlePause;
+		timer.Unpause += HandleUnpause;
+	}
+
+	/// <summary>
+	/// Handle Change of Mode
+	/// </summary>
+	/// <param name="sender"> Sender </param>
+	/// <param name="me"> Mode Event Arguments </param>
+	private void HandleModeChange(object? sender, ModeEventArgs me)
+	{
+		// TODO Load new game
+
+		// Handle timer reset
+		if(timer.Paused)
+		{
+			timer.ResetTimer();
+			timer.UnpauseUI();
+		}
+		else
+		{
+			timer.ResetTimer();
+			timer.StartTimer();
+		}
+	}
+
+	/// <summary>
+	/// Handle Pause Event
+	/// </summary>
+	/// <param name="sender"> Sender </param>
+	/// <param name="pe"> Pause Event Arguments </param>
+	private void HandlePause(object? sender, PauseEventArgs pe)
+	{
+		System.Diagnostics.Debug.WriteLine(pe.Message);
+	}
+
+	/// <summary>
+	/// Handle Unpause Event
+	/// </summary>
+	/// <param name="sender"> Sender </param>
+	/// <param name="pe"> Pause Event Arguments </param>
+	private void HandleUnpause(object? sender, PauseEventArgs pe)
+	{
+		System.Diagnostics.Debug.WriteLine(pe.Message);
+	}
+
+}

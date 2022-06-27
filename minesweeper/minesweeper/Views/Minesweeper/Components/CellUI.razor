@@ -5,24 +5,20 @@
 @using Microsoft.AspNetCore.Components.Web;
 @using minesweeper.Models.CustomEventArgs;
 
-@* Cell *@
 <div oncontextmenu="return false;" @onmouseup="HandleMouseUp" class="cell @CellStatus m-1 p-1">
 	
 </div>
 
 @code {
+	// Bind cell logic
+
+
 	// Clicked vs not clicked
 	string CellStatus = "covered";
 	bool covered = true;
 
 	// Flagged vs not flagged
 	bool flagged = false;
-
-	// Events
-	public event EventHandler<CellEventArgs>? Uncover; // Uncover event
-	public event EventHandler<CellEventArgs>? Flag; // Flag event
-	public event EventHandler<CellEventArgs>? Unflag; // Unflag event
-
 
 	/// <summary>
 	/// Handle Mouse
@@ -35,48 +31,19 @@
 			if(args.Button == 0) // Left Click
 			{
 				// Uncover Cell
-				RaiseUncoverEvent();
+				
 			}
 			else if(args.Button == 2) // Right Click
 			{
-				if(!flagged)
-				{
-					// Flag Cell
-					RaiseFlagEvent();
-				}
-				else
-				{
-					// Unflag Cell
-					RaiseUnflagEvent();
-				}
+				// Flag Cell
+				
 			}	
 		}
 	}
 
 
-	/// <summary>
-	/// Raise Uncover Event
-	/// </summary>
-	protected virtual void RaiseUncoverEvent()
-	{
-		Uncover?.Invoke(this, new CellEventArgs("Cell Uncovered!"));
-	}
 
-	/// <summary>
-	/// Raise Flag Event
-	/// </summary>
-	protected virtual void RaiseFlagEvent()
-	{
-		Flag?.Invoke(this, new CellEventArgs("Cell Flagged!"));
-	}
 
-	/// <summary>
-	/// Raise Unflag Event
-	/// </summary>
-	protected virtual void RaiseUnflagEvent()
-	{
-		Unflag?.Invoke(this, new CellEventArgs("Cell Unflagged!"));
-	}
 
 	/// <summary>
 	/// Uncover UI side implementation
