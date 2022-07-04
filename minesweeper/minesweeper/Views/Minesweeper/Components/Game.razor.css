@@ -1,7 +1,25 @@
 ﻿.Game {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    transition: all ease 0.3s;
+}
+.Grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .cell-row {
+    display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+/*Responsiveness*/
+@media (max-width: 460px) {
+    .Grid {
+        transform: rotate(90deg);
+    }
 }

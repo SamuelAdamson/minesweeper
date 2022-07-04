@@ -6,21 +6,27 @@
 @using minesweeper.Models;
 @using minesweeper.Models.CustomEventArgs;
 
-<div oncontextmenu="return false;" @onmouseup="HandleMouseUp" class="cell @CellStatus m-1 p-1">
+<div oncontextmenu="return false;" @onmouseup="HandleMouseUp" 
+	class="cell @CellStatus" style="--mode: var(--@Mode)">
 	<h3> @CellContent </h3>
 </div>
 
 @code {
-	// Bind cell logic
+	// Parameters
 	[Parameter]
-	public Cell Cell_ { get; set; }
+	public string Mode { get; set; } // Set mode -- Responsive styling depends on mode
+	[Parameter]
+	public Cell Cell_ { get; set; } // Bind cell logic
 
 	// Clicked vs not clicked
 	string CellStatus = "covered";
 	string CellContent = string.Empty;
 
-	// Constructor subscribe events
-
+	// TODO - Constructor subscribe events -- uncover triggered by cell logic
+	public CellUI()
+	{
+		
+	}
 
 
 	/// <summary>
@@ -51,9 +57,6 @@
 			}	
 		}
 	}
-
-
-
 
 
 	/// <summary>

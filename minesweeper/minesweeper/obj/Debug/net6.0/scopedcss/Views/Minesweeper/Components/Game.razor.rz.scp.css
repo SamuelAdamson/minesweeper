@@ -1,7 +1,25 @@
 .Game[b-oi6uh6zmgk] {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    transition: all ease 0.3s;
+}
+.Grid[b-oi6uh6zmgk] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .cell-row[b-oi6uh6zmgk] {
+    display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+/*Responsiveness*/
+@media (max-width: 460px) {
+    .Grid[b-oi6uh6zmgk] {
+        transform: rotate(90deg);
+    }
 }

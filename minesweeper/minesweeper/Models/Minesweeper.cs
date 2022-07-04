@@ -12,7 +12,9 @@ namespace minesweeper.Models
         /* Easy - 8x12 or 12x8
          * Medium - 12x16 or 16x12
          * Hard - 16x24 or 24x16
-         */ 
+         */
+        string mode; // Mode string
+
 
         // Grid dimensions
         int nRows, nCols;
@@ -24,10 +26,13 @@ namespace minesweeper.Models
 
         public Minesweeper(string mode)
         {
+            // Set mode
+            this.mode = mode;
+
             // Initialize number of cells
             // TODO - Change with mode
             nRows = 12;
-            nCols = 8;
+            nCols = 16;
 
             // Initialize number of flags and mines
             numFlags = 0;
@@ -59,8 +64,7 @@ namespace minesweeper.Models
 		public Cell[,] Grid { get => grid; }
         public int NRows { get => nRows; }
         public int NCols { get => nCols; }
-
-
+        public string Mode { get => mode; }
         private void PlaceMines(int row, int col)
         {
 

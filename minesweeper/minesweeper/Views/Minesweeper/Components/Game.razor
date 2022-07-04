@@ -5,15 +5,15 @@
 @using minesweeper.Models;
 @using minesweeper.Models.CustomEventArgs;
 
-<div Class="Game text-center">
+<div Class="Game">
 	<ModeUI @ref="modeSelector" />
 	<div class="Grid">
 		@for(int i = 0; i < game.NRows; i++)
 		{
-			<div class="row cell-row"> 
+			<div class="cell-row"> 
 			@for(int j = 0; j < game.NCols; j++)
 			{
-				<CellUI Cell_=game.Grid[i,j]/>
+				<CellUI Cell_=@game.Grid[i,j] Mode=@game.Mode/>
 			}
 			</div>
 		}
