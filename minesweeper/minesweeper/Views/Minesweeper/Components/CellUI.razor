@@ -3,22 +3,25 @@
 	Samuel Adamson
 *@
 @using Microsoft.AspNetCore.Components.Web;
+@using minesweeper.Models;
 @using minesweeper.Models.CustomEventArgs;
 
 <div oncontextmenu="return false;" @onmouseup="HandleMouseUp" class="cell @CellStatus m-1 p-1">
-	
+	<h3> @CellContent </h3>
 </div>
 
 @code {
 	// Bind cell logic
-
+	[Parameter]
+	public Cell Cell_ { get; set; }
 
 	// Clicked vs not clicked
 	string CellStatus = "covered";
-	bool covered = true;
+	string CellContent = string.Empty;
 
-	// Flagged vs not flagged
-	bool flagged = false;
+	// Constructor subscribe events
+
+
 
 	/// <summary>
 	/// Handle Mouse
@@ -26,17 +29,25 @@
 	/// <param name="args"></param>
 	private void HandleMouseUp(MouseEventArgs args)
 	{
-		if(covered) // First ensure that button is covered
+		if(Cell_.Covered) // First ensure that button is covered
 		{
 			if(args.Button == 0) // Left Click
 			{
 				// Uncover Cell
-				
+				string adjacent = Cell_.Uncover();
+				UncoverUI(adjacent);
 			}
 			else if(args.Button == 2) // Right Click
 			{
 				// Flag Cell
-				
+				if(Cell_.Flagged) {
+					Cell_.Unflag();
+					UnflagUI();
+				}
+				else {
+					Cell_.Flag();
+					FlagUI();
+				}
 			}	
 		}
 	}
@@ -49,24 +60,31 @@
 	/// Uncover UI side implementation
 	/// </summary>
 	/// <param name="adjacentNum"> Number of Adjacent Cells </param>
-	public void UncoverUI(string adjacentNum) {
+	private void UncoverUI(string adjacentNum) {
 		CellStatus = $"uncovered {adjacentNum}";
-		covered = false;
+		if(Cell_.Mine) { // Cell is a mine
+				// TODO
+		}
+		else { // Cell is not a mine, show number of adjacent
+			CellContent = Cell_.Adjacent != 0 ? Cell_.Adjacent.ToString() : string.Empty;	
+		}
 	}
 
 	/// <summary>
 	/// Flag Cell on UI Side
 	/// </summary>
-	public void FlagUI()
+	private void FlagUI()
 	{
 		CellStatus = "covered flag";
+		CellContent = "\u2691";
 	}
 
 	/// <summary>
 	/// Unflag Cell on UI Side
 	/// </summary>
-	public void UnflagUI()
+	private void UnflagUI()
 	{
 		CellStatus = "covered";
+		CellContent = string.Empty;
 	}
 }

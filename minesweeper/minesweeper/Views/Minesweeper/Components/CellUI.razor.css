@@ -1,8 +1,12 @@
-﻿.cell {
+﻿/*Cell Styling*/
+.cell {
     height: 50px;
     width: 50px;
     background-color: rgba(137, 148, 153, 0.8);
     transition: all ease 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .cell.covered {
     filter: brightness(70%);
@@ -16,14 +20,21 @@
     cursor: default;
 }
 .cell.uncovered.one { /* One Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(154, 205, 50, 0.9);
 }
 .cell.uncovered.two { /* Two Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(218, 175, 32, 0.9);
 }
 .cell.uncovered.three { /* Three Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(255, 127, 80, 0.9);
 }
 .cell.uncovered.fourplus { /* Four or more Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(255, 40, 50, 0.9);
+}
+
+/*Cell Content Styling*/
+.cell h3 {
+    color: rgba(0,0,0,0.8);
+    margin: 0;
+    padding: 0;
 }

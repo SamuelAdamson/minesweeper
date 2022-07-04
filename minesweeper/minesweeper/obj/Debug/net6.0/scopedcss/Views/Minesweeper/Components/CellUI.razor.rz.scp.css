@@ -1,8 +1,12 @@
+/*Cell Styling*/
 .cell[b-dkutulbe5c] {
     height: 50px;
     width: 50px;
     background-color: rgba(137, 148, 153, 0.8);
     transition: all ease 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .cell.covered[b-dkutulbe5c] {
     filter: brightness(70%);
@@ -16,14 +20,21 @@
     cursor: default;
 }
 .cell.uncovered.one[b-dkutulbe5c] { /* One Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(154, 205, 50, 0.9);
 }
 .cell.uncovered.two[b-dkutulbe5c] { /* Two Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(218, 175, 32, 0.9);
 }
 .cell.uncovered.three[b-dkutulbe5c] { /* Three Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(255, 127, 80, 0.9);
 }
 .cell.uncovered.fourplus[b-dkutulbe5c] { /* Four or more Adjacent */
-    background-color: rgba(137, 148, 153, 0.45);
+    background-color: rgba(255, 40, 50, 0.9);
+}
+
+/*Cell Content Styling*/
+.cell h3[b-dkutulbe5c] {
+    color: rgba(0,0,0,0.8);
+    margin: 0;
+    padding: 0;
 }

@@ -4,7 +4,6 @@
  *  Samuel Adamson 
  */
 using minesweeper.Models.CustomEventArgs;
-using minesweeper.Views.Minesweeper.Components;
 namespace minesweeper.Models
 {
     public class Cell
@@ -31,7 +30,8 @@ namespace minesweeper.Models
             mine = false;
             covered = true;
             flagged = false;
-            adjacent = 0;
+            Random rand = new Random();
+            adjacent = rand.Next(5);
         }
 
         // Access controlled
@@ -42,22 +42,36 @@ namespace minesweeper.Models
         public int Row { get => row; }
         public int Col { get => col; }
 
-        /// <summary>
-        /// Handle uncovering of cell
-        /// </summary>
-        /// <param name="sender"> Sender </param>
-        /// <param name="e"> Args </param>
-        public void HandleUncover(object? sender, CellEventArgs e)
+
+        private string GetAdjacentString()
+        {
+            switch(adjacent)
+            {
+                case 0: return string.Empty;
+                case 1: return "one";
+                case 2: return "two";
+                case 3: return "three";
+                default: return "fourplus";
+            }
+        }
+
+        public string Uncover()
         {
             // Update covered
             covered = false;
+            //More logic
 
-            
+            return GetAdjacentString();
         }
 
-        public void HandleFlag(object? sender, CellEventArgs e)
+        public void Flag()
         {
+            flagged = true;
+        }
 
+        public void Unflag()
+        {
+            flagged = false;
         }
 
         public void SetMine()

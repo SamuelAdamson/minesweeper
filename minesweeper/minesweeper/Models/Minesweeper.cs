@@ -18,12 +18,20 @@ namespace minesweeper.Models
         int nRows, nCols;
         Cell[,] grid;
 
+        // Number of flags used and mines
+        int numFlags;
+        int numMines;
+
         public Minesweeper(string mode)
         {
-            // TODO Update grid dimensions for repsonsiveness
             // Initialize number of cells
-            nRows = 8;
-            nCols = 12;
+            // TODO - Change with mode
+            nRows = 12;
+            nCols = 8;
+
+            // Initialize number of flags and mines
+            numFlags = 0;
+            numMines = 10; // TODO - Change with mode
 
             // Initialize Cell Grid
             InitializeCells();
@@ -43,7 +51,6 @@ namespace minesweeper.Models
                 {
                     // New Cell
                     grid[i, j] = new Cell(i, j);
-
                 }
             }
         }
