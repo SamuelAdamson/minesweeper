@@ -30,6 +30,9 @@
 	// Game reference
 	Minesweeper game;
 
+	/// <summary>
+	/// Game Constructor
+	/// </summary>
 	public Game()
 	{
 		// Create new game
@@ -75,9 +78,9 @@
 	/// </summary>
 	/// <param name="sender"> Sender </param>
 	/// <param name="pe"> Pause Event Arguments </param>
-	private void HandlePause(object? sender, PauseEventArgs pe)
+	private void HandlePause(object? sender, TimerEventArgs te)
 	{
-		System.Diagnostics.Debug.WriteLine(pe.Message);
+		System.Diagnostics.Debug.WriteLine(te.Message); // TODO
 	}
 
 	/// <summary>
@@ -85,9 +88,18 @@
 	/// </summary>
 	/// <param name="sender"> Sender </param>
 	/// <param name="pe"> Pause Event Arguments </param>
-	private void HandleUnpause(object? sender, PauseEventArgs pe)
+	private void HandleUnpause(object? sender, TimerEventArgs te)
 	{
-		System.Diagnostics.Debug.WriteLine(pe.Message);
+		System.Diagnostics.Debug.WriteLine(te.Message); //TODO
 	}
 
+	/// <summary>
+	/// Handle Restart Event
+	/// </summary>
+	/// <param name="sender"> Sender </param>
+	/// <param name="te"> Restart Event Arguments </param>
+	private void HandleRestart(object? sender, TimerEventArgs te)
+	{
+		System.Diagnostics.Debug.WriteLine(te.Message); // TODO
+	}
 }

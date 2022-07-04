@@ -5,18 +5,18 @@
 
 namespace minesweeper.Models.CustomEventArgs
 {
-    public class PauseEventArgs : EventArgs
+    public class TimerEventArgs : EventArgs
     {
         // Event message
         string message;
 
-        public PauseEventArgs(string message)
+        public TimerEventArgs(string message)
         {
             // Set fields
             this.message = message;
         }
 
         // Access control
-        public string Message { get => message; set => message = value; }
+        public string Message { get => message; }
     }
 }

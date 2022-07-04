@@ -7,15 +7,19 @@
 @using System.Threading;
 @implements IDisposable;
 
-<div class="TimerUI d-flex flex-row justify-content-between">
+<div class="TimerUI">
 	<h3 class="display-6 time">@timeElapsed</h3>
-	<button class="btn pause" @onclick="OnPause">@pauseMsg</button>
+	<div class="timer-row">
+		<button class="btn timer-btn" @onclick="OnPause">@pauseMsg</button>
+		<button class="btn timer-btn" @onclick="OnReset">reset</button>
+	</div>
 </div>
 
 @code {
 	// Events
-	public event EventHandler<PauseEventArgs> Pause;
-	public event EventHandler<PauseEventArgs> Unpause;
+	public event EventHandler<TimerEventArgs> Pause;
+	public event EventHandler<TimerEventArgs> Unpause;
+	public event EventHandler<TimerEventArgs> Reset;
 
 	// Declare timer
 	Timer gameTimer;
@@ -97,11 +101,20 @@
 	}
 
 	/// <summary>
+	/// On Restart Click
+	/// </summary>
+	private void OnReset()
+	{
+		ResetUI();
+		RaiseReset();
+	}
+
+	/// <summary>
 	/// Raise Pause Event
 	/// </summary>
 	protected virtual void RaisePause()
 	{
-		Pause?.Invoke(this, new PauseEventArgs("Game Paused!"));
+		Pause?.Invoke(this, new TimerEventArgs("Game Paused!"));
 	}
 
 	/// <summary>
@@ -109,9 +122,20 @@
 	/// </summary>
 	protected virtual void RaiseUnpause()
 	{
-		Unpause?.Invoke(this, new PauseEventArgs("Game Unpaused!"));
+		Unpause?.Invoke(this, new TimerEventArgs("Game Unpaused!"));
 	}
 
+	/// <summary>
+	/// Raise reset event
+	/// </summary>
+	protected virtual void RaiseReset()
+	{
+		Reset?.Invoke(this, new TimerEventArgs("Game Restarted!"));
+	}
+
+	/// <summary>
+	/// Unpause UI - Start Timer Again
+	/// </summary>
 	public void UnpauseUI()
 	{
 		// Set pause message and create new timer (start ticks)
@@ -120,12 +144,25 @@
 		paused = false;
 	}
 
+	/// <summary>
+	/// Pause UI - Stop Timer
+	/// </summary>
 	public void PauseUI()
 	{
 		// Set pause message and dispose of timer (stop ticks)
 		Dispose();
 		paused = true;
 		pauseMsg = "unpause";
+	}
+
+	/// <summary>
+	/// Reset UI - Reset time and timer
+	/// </summary>
+	public void ResetUI()
+	{
+		ResetTimer(); // Reset timer
+		if (!paused) StartTimer();
+		else Dispose();
 	}
 
 	/// <summary>

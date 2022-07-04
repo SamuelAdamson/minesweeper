@@ -108,13 +108,25 @@
     color: rgb(255,255,255);
 }
 /* _content/minesweeper/Views/Minesweeper/Components/TimerUI.razor.rz.scp.css */
+/*Timer UI Styling*/
+.TimerUI[b-g4r5ful6hn] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.timer-row[b-g4r5ful6hn] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 h3.display-6.time[b-g4r5ful6hn] {
     padding-left: 0;
 }
-.pause[b-g4r5ful6hn] {
+.btn.timer-btn[b-g4r5ful6hn] {
     height: fit-content;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    margin-left: 1rem;
     margin-top: auto;
     margin-bottom: auto;
     font-size: larger;
@@ -122,7 +134,7 @@ h3.display-6.time[b-g4r5ful6hn] {
     color: rgba(0,0,0,0.7);
     transition: all ease 0.5s;
 }
-.pause:hover[b-g4r5ful6hn] {
+.btn.timer-btn:hover[b-g4r5ful6hn] {
     background-color: rgba(0,0,0,0.7);
     color: rgb(255,255,255);
 }
