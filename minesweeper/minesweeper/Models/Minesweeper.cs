@@ -24,28 +24,56 @@ namespace minesweeper.Models
         int numFlags;
         int numMines;
 
+        /// <summary>
+        /// Minesweeper Constructor
+        /// </summary>
+        /// <param name="mode"> Mode [easy, medium, hard] </param>
         public Minesweeper(string mode)
         {
-			// Set mode
-			this.mode = mode;
-
-			// Initialize number of cells
-			// TODO - Change with mode
-			nRows = 16;
-            nCols = 20;
-
-            // Initialize number of flags and mines
-            numFlags = 0;
-            numMines = 10; // TODO - Change with mode
+            // Set values based on mode
+            SetModeValues(mode);
+            numFlags = 0; // No flags used at first
 
             // Initialize Cell Grid
             InitializeCells();
         }
 
         /// <summary>
-        /// Initialize Cells in Grid of specified rows and columns
+        /// Set Grid Dimensions and number of mines based on difficulty
         /// </summary>
-        private void InitializeCells()
+        /// <param name="modeStr"></param>
+        private void SetModeValues(string modeStr)
+		{
+            // Set mode string
+            this.mode = modeStr;
+
+            if(modeStr == "easy") {
+                // 8x12 Grid
+                // 8 Mines
+                nRows = 8;
+                nCols = 12;
+                numMines = 8;
+			}
+            else if(modeStr == "medium") {
+                // 12x16 Grid
+                // 20 Mines
+                nRows = 12;
+                nCols = 16;
+                numMines = 20;
+            }
+            else {
+                // 16x20 Grid
+                // 50 Mines
+                nRows = 16;
+                nCols = 20;
+                numMines = 50;
+			}
+		}
+
+		/// <summary>
+		/// Initialize Cells in Grid of specified rows and columns
+		/// </summary>
+		private void InitializeCells()
         {
             // Initialize grid of cells
             grid = new Cell[nRows, nCols];
@@ -65,6 +93,8 @@ namespace minesweeper.Models
         public int NRows { get => nRows; }
         public int NCols { get => nCols; }
         public string Mode { get => mode; }
+
+
         private void PlaceMines(int row, int col)
         {
 

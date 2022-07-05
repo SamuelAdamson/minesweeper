@@ -39,7 +39,7 @@
 	{
 		// Create new game
 		game = new Minesweeper("hard");
-		
+
 	}
 
 	/// <summary>
@@ -52,6 +52,7 @@
 		modeSelector.ModeChange += HandleModeChange;
 		timer.Pause += HandlePause;
 		timer.Unpause += HandleUnpause;
+		timer.Reset += HandleReset;
 	}
 
 	/// <summary>
@@ -61,19 +62,32 @@
 	/// <param name="me"> Mode Event Arguments </param>
 	private void HandleModeChange(object? sender, ModeEventArgs me)
 	{
-		// TODO Load new game
+
+		// Reset timer
+		timer.ResetTimer();
+		timer.Dispose(); // Dispose timer -- Stop ticks
+
+		// Change mode
+		ChangeMode(me.NewMode);
 
 		// Handle timer reset
-		if(timer.Paused)
+		if(!timer.Paused)
 		{
-			timer.ResetTimer();
-			timer.UnpauseUI();
-		}
-		else
-		{
-			timer.ResetTimer();
 			timer.StartTimer();
 		}
+	}
+
+	/// <summary>
+	/// Change Mode
+	/// </summary>
+	/// <param name="mode"></param>
+	private void ChangeMode(string mode)
+	{
+		// Assign new game
+		game = new Minesweeper(mode);
+		GC.Collect(); // Clean up old object
+
+		System.Diagnostics.Debug.WriteLine(game.Mode);
 	}
 
 	/// <summary>
@@ -97,11 +111,11 @@
 	}
 
 	/// <summary>
-	/// Handle Restart Event
+	/// Handle Reset Event
 	/// </summary>
 	/// <param name="sender"> Sender </param>
-	/// <param name="te"> Restart Event Arguments </param>
-	private void HandleRestart(object? sender, TimerEventArgs te)
+	/// <param name="te"> Reset Event Arguments </param>
+	private void HandleReset(object? sender, TimerEventArgs te)
 	{
 		System.Diagnostics.Debug.WriteLine(te.Message); // TODO
 	}

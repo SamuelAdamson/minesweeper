@@ -55,8 +55,8 @@
         transform: rotate(90deg);
         white-space: nowrap;
         /* Different cell options for height/width */
-        --easy: 5vmax;
-        --medium: 3.5vmax;
-        margin: 0.2vmax;
+        --easy: 4vmax;
+        --medium: 3vmax;
+        margin: 0.22vmax;
     }
 }

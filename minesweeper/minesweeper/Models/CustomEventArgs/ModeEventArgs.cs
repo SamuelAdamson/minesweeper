@@ -17,6 +17,6 @@ namespace minesweeper.Models.CustomEventArgs
 		}
 
 		// Access Control
-		public string NewMode { get => newMode; set => newMode = value; }
+		public string NewMode { get => newMode; }
 	}
 }

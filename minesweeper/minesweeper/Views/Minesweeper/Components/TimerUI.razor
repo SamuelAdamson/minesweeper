@@ -139,7 +139,7 @@
 	public void UnpauseUI()
 	{
 		// Set pause message and create new timer (start ticks)
-		NewTimer(500);
+		StartTimer();
 		pauseMsg = "pause";
 		paused = false;
 	}
@@ -192,8 +192,7 @@
 	/// </summary>
 	public void StartTimer()
 	{
-		// Dispose of old timer and create new one
-		Dispose();
+		// This function is here so other classes don't call NewTimer directly
 		NewTimer(500);
 	}
 
