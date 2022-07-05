@@ -41,19 +41,22 @@
 /* Cell Sizing/Responsiveness*/
 .cell {
     /* Different cell options for height/width */
-    --easy: 2.5vw;
-    --medium: 2vw;
-    --hard: 1.5vw;
+    --easy: 3vmax;
+    --medium: 2.5vmax;
+    --hard: 2vmax;
     /* Height and width set by mode */
     height: var(--mode);
     width: var(--mode);
-    min-height: 20px;
-    min-width: 20px;
-    /*Margin does not change with mode*/
-    margin: 0.25vmax;
+    margin: 0.15vmax;
 }
 @media (max-width: 460px) {
     .cell {
-        transform: rotate(-90deg);
+        /*Rotate Grid*/
+        transform: rotate(90deg);
+        white-space: nowrap;
+        /* Different cell options for height/width */
+        --easy: 5vmax;
+        --medium: 3.5vmax;
+        margin: 0.2vmax;
     }
 }

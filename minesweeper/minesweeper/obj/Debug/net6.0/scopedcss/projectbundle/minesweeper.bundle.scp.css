@@ -42,20 +42,23 @@
 /* Cell Sizing/Responsiveness*/
 .cell[b-dkutulbe5c] {
     /* Different cell options for height/width */
-    --easy: 2.5vw;
-    --medium: 2vw;
-    --hard: 1.5vw;
+    --easy: 3vmax;
+    --medium: 2.5vmax;
+    --hard: 2vmax;
     /* Height and width set by mode */
     height: var(--mode);
     width: var(--mode);
-    min-height: 20px;
-    min-width: 20px;
-    /*Margin does not change with mode*/
-    margin: 0.25vmax;
+    margin: 0.15vmax;
 }
 @media (max-width: 460px) {
     .cell[b-dkutulbe5c] {
-        transform: rotate(-90deg);
+        /*Rotate Grid*/
+        transform: rotate(90deg);
+        white-space: nowrap;
+        /* Different cell options for height/width */
+        --easy: 5vmax;
+        --medium: 3.5vmax;
+        margin: 0.2vmax;
     }
 }
 /* _content/minesweeper/Views/Minesweeper/Components/Game.razor.rz.scp.css */
@@ -65,7 +68,11 @@
     text-align: center;
     transition: all ease 0.3s;
 }
-.Grid[b-oi6uh6zmgk] {
+.grid-wrapper[b-oi6uh6zmgk] {
+    margin-left: auto;
+    margin-right: auto;
+}
+.grid[b-oi6uh6zmgk] {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,8 +87,11 @@
 
 /*Responsiveness*/
 @media (max-width: 460px) {
-    .Grid[b-oi6uh6zmgk] {
-        transform: rotate(90deg);
+    .grid-wrapper[b-oi6uh6zmgk] {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        white-space: nowrap;
+        padding-top: 1rem;
     }
 }
 /* _content/minesweeper/Views/Minesweeper/Components/ModeUI.razor.rz.scp.css */

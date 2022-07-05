@@ -4,7 +4,11 @@
     text-align: center;
     transition: all ease 0.3s;
 }
-.Grid[b-oi6uh6zmgk] {
+.grid-wrapper[b-oi6uh6zmgk] {
+    margin-left: auto;
+    margin-right: auto;
+}
+.grid[b-oi6uh6zmgk] {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +23,10 @@
 
 /*Responsiveness*/
 @media (max-width: 460px) {
-    .Grid[b-oi6uh6zmgk] {
-        transform: rotate(90deg);
+    .grid-wrapper[b-oi6uh6zmgk] {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        white-space: nowrap;
+        padding-top: 1rem;
     }
 }
