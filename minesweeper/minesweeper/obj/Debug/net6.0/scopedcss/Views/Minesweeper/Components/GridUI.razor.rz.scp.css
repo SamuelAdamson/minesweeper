@@ -1,19 +1,13 @@
-﻿.Game {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    transition: all ease 0.3s;
-}
-.grid-wrapper {
+.grid-wrapper[b-34r659u6dw] {
     margin-left: auto;
     margin-right: auto;
 }
-.grid {
+.grid[b-34r659u6dw] {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.cell-row {
+.cell-row[b-34r659u6dw] {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
@@ -23,7 +17,7 @@
 
 /*Responsiveness*/
 @media (max-width: 460px) {
-    .grid-wrapper {
+    .grid-wrapper[b-34r659u6dw] {
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         white-space: nowrap;

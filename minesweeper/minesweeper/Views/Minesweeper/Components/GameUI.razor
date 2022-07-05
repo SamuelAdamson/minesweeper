@@ -5,21 +5,9 @@
 @using minesweeper.Models;
 @using minesweeper.Models.CustomEventArgs;
 
-<div class="Game">
+<div class="GameUI">
 	<ModeUI @ref="modeSelector" />
-	<div class="grid-wrapper">
-		<div class="grid">
-		@for(int i = 0; i < game.NRows; i++)
-			{
-				<div class="cell-row"> 
-				@for(int j = 0; j < game.NCols; j++)
-				{
-					<CellUI Cell_=@game.Grid[i,j] Mode=@game.Mode/>
-				}
-				</div>
-			}
-		</div>
-	</div>
+	<GridUI @ref="grid" Game_=@game/>
 	<TimerUI @ref="timer" />
 </div>
 
@@ -27,19 +15,18 @@
 	// Properties
 	ModeUI modeSelector;
 	TimerUI timer;
-	CellUI[,] cellUIs;
+	GridUI grid;
 
 	// Game reference
-	Minesweeper game;
+	Game game;
 
 	/// <summary>
-	/// Game Constructor
+	/// GameUI Constructor
 	/// </summary>
-	public Game()
+	public GameUI()
 	{
 		// Create new game
-		game = new Minesweeper("hard");
-
+		game = new Game("medium");
 	}
 
 	/// <summary>
@@ -62,7 +49,6 @@
 	/// <param name="me"> Mode Event Arguments </param>
 	private void HandleModeChange(object? sender, ModeEventArgs me)
 	{
-
 		// Reset timer
 		timer.ResetTimer();
 		timer.Dispose(); // Dispose timer -- Stop ticks
@@ -80,14 +66,15 @@
 	/// <summary>
 	/// Change Mode
 	/// </summary>
-	/// <param name="mode"></param>
+	/// <param name="mode"> Mode String </param>
 	private void ChangeMode(string mode)
 	{
 		// Assign new game
-		game = new Minesweeper(mode);
-		GC.Collect(); // Clean up old object
+		game = new Game(mode);
+		StateHasChanged(); // Change state.
 
-		System.Diagnostics.Debug.WriteLine(game.Mode);
+		// Garbage collector
+		GC.Collect(); // Clean up old object
 	}
 
 	/// <summary>

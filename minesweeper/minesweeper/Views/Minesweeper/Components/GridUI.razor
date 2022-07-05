@@ -1,0 +1,24 @@
+﻿@*
+	Grid UI Component
+	Samuel Adamson
+*@
+@using minesweeper.Models;
+@using minesweeper.Models.CustomEventArgs;
+
+<div class="grid-wrapper">
+	<div class="grid">
+	@for(int i = 0; i < Game_.NRows; i++)
+		{
+			<div class="cell-row"> 
+			@for(int j = 0; j < Game_.NCols; j++)
+			{
+				<CellUI Cell_=@Game_.Grid[i,j] Mode=@Game_.Mode/>
+			}
+			</div>
+		}
+	</div>
+</div>
+
+@code {
+	[Parameter] public Game Game_ { get; set; }
+}

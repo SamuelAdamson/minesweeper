@@ -1,4 +1,4 @@
-﻿/*  Minesweeper Class
+﻿/*  Game Class
  *      - Handle Bulk of Server Side Game Logic
  *      - Hold a 2D List of all Cells
  *      
@@ -7,7 +7,7 @@
 
 namespace minesweeper.Models
 {
-    public class Minesweeper
+    public class Game
     {
         /* Easy - 8x12 or 12x8
          * Medium - 12x16 or 16x12
@@ -28,7 +28,7 @@ namespace minesweeper.Models
         /// Minesweeper Constructor
         /// </summary>
         /// <param name="mode"> Mode [easy, medium, hard] </param>
-        public Minesweeper(string mode)
+        public Game(string mode)
         {
             // Set values based on mode
             SetModeValues(mode);

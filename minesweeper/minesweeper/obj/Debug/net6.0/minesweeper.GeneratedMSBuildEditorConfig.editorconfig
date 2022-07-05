@@ -23,9 +23,13 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xDZWxsVUkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-dkutulbe5c
 
-[D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/Game.razor]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xHYW1lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-oi6uh6zmgk
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/GameUI.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xHYW1lVUkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-oycpind3ta
+
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/GridUI.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xHcmlkVUkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-34r659u6dw
 
 [D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/ModeUI.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xNb2RlVUkucmF6b3I=

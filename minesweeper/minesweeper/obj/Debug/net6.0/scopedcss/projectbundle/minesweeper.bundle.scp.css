@@ -61,23 +61,24 @@
         margin: 0.22vmax;
     }
 }
-/* _content/minesweeper/Views/Minesweeper/Components/Game.razor.rz.scp.css */
-.Game[b-oi6uh6zmgk] {
+/* _content/minesweeper/Views/Minesweeper/Components/GameUI.razor.rz.scp.css */
+.GameUI[b-oycpind3ta] {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     transition: all ease 0.3s;
 }
-.grid-wrapper[b-oi6uh6zmgk] {
+/* _content/minesweeper/Views/Minesweeper/Components/GridUI.razor.rz.scp.css */
+.grid-wrapper[b-34r659u6dw] {
     margin-left: auto;
     margin-right: auto;
 }
-.grid[b-oi6uh6zmgk] {
+.grid[b-34r659u6dw] {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.cell-row[b-oi6uh6zmgk] {
+.cell-row[b-34r659u6dw] {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
@@ -87,7 +88,7 @@
 
 /*Responsiveness*/
 @media (max-width: 460px) {
-    .grid-wrapper[b-oi6uh6zmgk] {
+    .grid-wrapper[b-34r659u6dw] {
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         white-space: nowrap;
