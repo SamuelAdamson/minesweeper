@@ -84,7 +84,9 @@
 	/// <param name="pe"> Pause Event Arguments </param>
 	private void HandlePause(object? sender, TimerEventArgs te)
 	{
-		System.Diagnostics.Debug.WriteLine(te.Message); // TODO
+		// Pause Grid
+		grid.OnPause();
+		StateHasChanged();
 	}
 
 	/// <summary>
@@ -94,7 +96,9 @@
 	/// <param name="pe"> Pause Event Arguments </param>
 	private void HandleUnpause(object? sender, TimerEventArgs te)
 	{
-		System.Diagnostics.Debug.WriteLine(te.Message); //TODO
+		// Unpause Grid
+		grid.OnUnPause();
+		StateHasChanged();
 	}
 
 	/// <summary>

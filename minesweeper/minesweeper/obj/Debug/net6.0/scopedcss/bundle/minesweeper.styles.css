@@ -70,13 +70,32 @@
 }
 /* _content/minesweeper/Views/Minesweeper/Components/GridUI.razor.rz.scp.css */
 .grid-wrapper[b-34r659u6dw] {
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    box-sizing: border-box;
 }
 .grid[b-34r659u6dw] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.cover[b-34r659u6dw] {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    width: 0;
+    background-color: rgb(127, 138, 143);
+    color: rgb(255,255,255);
+}
+.cover.paused[b-34r659u6dw] {
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+.cover h3[b-34r659u6dw] {
+    margin: 0;
+    padding: 0;
 }
 .cell-row[b-34r659u6dw] {
     display: flex;
@@ -90,9 +109,13 @@
 @media (max-width: 460px) {
     .grid-wrapper[b-34r659u6dw] {
         writing-mode: vertical-rl;
-        transform: rotate(180deg);
         white-space: nowrap;
-        padding-top: 1rem;
+        transform: rotate(180deg);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .cover h3[b-34r659u6dw] {
+        transform: rotate(90deg);
     }
 }
 /* _content/minesweeper/Views/Minesweeper/Components/ModeUI.razor.rz.scp.css */
