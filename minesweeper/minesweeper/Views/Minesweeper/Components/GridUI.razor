@@ -12,7 +12,7 @@
 			<div class="cell-row"> 
 			@for(int j = 0; j < Game_.NCols; j++)
 			{
-				<CellUI Cell_=@Game_.Grid[i,j] Mode=@Game_.Mode/>
+				<CellUI Cell_=@Game_.Grid[i,j] Mode=@Game_.Mode />
 			}
 			</div>
 		}
@@ -20,5 +20,6 @@
 </div>
 
 @code {
-	[Parameter] public Game Game_ { get; set; }
+	[Parameter] public Game Game_ { get; set; } // Game class associated with this grid
+	
 }

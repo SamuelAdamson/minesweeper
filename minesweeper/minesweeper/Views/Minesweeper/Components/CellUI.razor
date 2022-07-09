@@ -16,14 +16,27 @@
 	[Parameter] public string Mode { get; set; } // Set mode -- Responsive styling depends on mode
 	[Parameter] public Cell Cell_ { get; set; } // Bind cell logic
 
+
 	// Clicked vs not clicked
 	string CellStatus = "covered";
 	string CellContent = string.Empty;
 
-	// TODO - Constructor subscribe events -- uncover triggered by cell logic
-	public CellUI()
+
+	/// <summary>
+	/// Called after initialization
+	/// </summary>
+	protected override void OnInitialized()
 	{
-		
+	
+	}
+
+	/// <summary>
+	/// Called when parameters are set
+	/// </summary>
+	protected override void OnParametersSet()
+	{
+		// When new parameters set, reset cell
+		ResetUI();
 	}
 
 
@@ -37,18 +50,16 @@
 		{
 			if(args.Button == 0) // Left Click
 			{
-				// Uncover Cell
-				string adjacent = Cell_.Uncover();
+				string adjacent = Cell_.Uncover(); // Uncover Cell
 				UncoverUI(adjacent);
 			}
 			else if(args.Button == 2) // Right Click
 			{
-				// Flag Cell
-				if(Cell_.Flagged) {
+				if(Cell_.Flagged) { // Unflag cell 
 					Cell_.Unflag();
-					UnflagUI();
+					ResetUI();
 				}
-				else {
+				else { // Flag cell
 					Cell_.Flag();
 					FlagUI();
 				}
@@ -81,9 +92,9 @@
 	}
 
 	/// <summary>
-	/// Unflag Cell on UI Side
+	/// Reset Cell UI
 	/// </summary>
-	private void UnflagUI()
+	private void ResetUI() 
 	{
 		CellStatus = "covered";
 		CellContent = string.Empty;

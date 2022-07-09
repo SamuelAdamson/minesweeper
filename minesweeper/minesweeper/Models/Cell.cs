@@ -15,6 +15,9 @@ namespace minesweeper.Models
         int adjacent; // Number of adjacent mines
         int row, col; // Coordinates of cell in grid
 
+        public event EventHandler<CellEventArgs> UncoverCell; // Uncover cell by logic
+
+
         /// <summary>
         /// Cell constructor
         /// </summary>
@@ -30,8 +33,9 @@ namespace minesweeper.Models
             mine = false;
             covered = true;
             flagged = false;
-            Random rand = new Random();
+            Random rand = new Random(); //DEBUG
             adjacent = rand.Next(5);
+            // adjacent = 0;
         }
 
         // Access controlled
@@ -42,7 +46,10 @@ namespace minesweeper.Models
         public int Row { get => row; }
         public int Col { get => col; }
 
-
+        /// <summary>
+        /// Convert adjacent integer to string
+        /// </summary>
+        /// <returns> Adjacent Number (string) </returns>
         private string GetAdjacentString()
         {
             switch(adjacent)
