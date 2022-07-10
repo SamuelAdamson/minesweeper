@@ -105,8 +105,12 @@
 	/// </summary>
 	private void OnReset()
 	{
-		ResetUI();
 		RaiseReset();
+		if(paused) {
+			RaiseUnpause();
+			UnpauseUI();
+		}
+		ResetUI();
 	}
 
 	/// <summary>
@@ -161,8 +165,7 @@
 	public void ResetUI()
 	{
 		ResetTimer(); // Reset timer
-		if (!paused) StartTimer();
-		else Dispose();
+		StartTimer(); // Start timer again
 	}
 
 	/// <summary>

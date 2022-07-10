@@ -9,20 +9,17 @@ namespace minesweeper.Models.CustomEventArgs
     {
         // Event message
         string message;
-        int? numAdjacent;
-        bool? flagsAvailable;
+        bool mine;
 
-        public CellEventArgs(string message, int? numAdjacent, bool? flagsAvailable)
+        public CellEventArgs(string message, bool mine)
 		{
             // Set values
             this.message = message;
-            this.numAdjacent = numAdjacent;
-            this.flagsAvailable = flagsAvailable;
+            this.mine = mine;
 		}
 
         // Access control
 		public string Message { get => message; }
-        public int? NumAdjacent { get => numAdjacent; }
-        public bool? FlagsAvailable { get => flagsAvailable; }
+        public bool Mine { get => mine; }
     }
 }

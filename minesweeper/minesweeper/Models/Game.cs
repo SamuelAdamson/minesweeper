@@ -4,6 +4,7 @@
  *      
  *  Samuel Adamson 
  */
+using minesweeper.Models.CustomEventArgs;
 
 namespace minesweeper.Models
 {
@@ -14,7 +15,7 @@ namespace minesweeper.Models
          * Hard - 16x20 or 24x16
          */
         string mode; // Mode string
-
+        bool firstSelect; // First selection 
 
         // Grid dimensions
         int nRows, nCols;
@@ -38,7 +39,8 @@ namespace minesweeper.Models
         {
             // Initialize random generator
             random = new Random();
-            
+            firstSelect = true; // First selection is set to true
+
             // Set values based on mode
             SetModeValues(mode);
             numFlags = 0; // No flags used at first
@@ -69,14 +71,14 @@ namespace minesweeper.Models
                 // 20 Mines
                 nRows = 12;
                 nCols = 16;
-                numMines = 20;
+                numMines = 40;
             }
             else {
                 // 16x20 Grid
                 // 50 Mines
                 nRows = 16;
                 nCols = 20;
-                numMines = 50;
+                numMines = 80;
 			}
 		}
 
@@ -91,9 +93,9 @@ namespace minesweeper.Models
             for(int i = 0; i < nRows; i++)
             {
                 for(int j = 0; j < nCols; j++)
-                {
-                    // New Cell
-                    grid[i, j] = new Cell(i, j);
+                {                    
+                    grid[i, j] = new Cell(i, j); // New cell
+                    grid[i, j].UserUncoverCell += HandleUncover; // Subscribe uncover
                 }
             }
         }
@@ -145,13 +147,15 @@ namespace minesweeper.Models
             // Iterate adjacent coordinates
             foreach(Tuple<int,int> adjacent in adjacents)
 			{
-                System.Diagnostics.Debug.WriteLine($"Coord: ({coord.Item1},{coord.Item2}) Adjacent: ({adjacent.Item1},{adjacent.Item2})");
                 // Add one to number of adjacent mines on each adjacent cell
                 grid[adjacent.Item1, adjacent.Item2].Adjacent++;
                 grid[adjacent.Item1, adjacent.Item2].SetAdjacentString();
             }
 		}
 
+        /// <summary>
+        /// Get random coordinates for mines and place them
+        /// </summary>
         private void PlaceMines()
 		{
 			// Set random coordinates
@@ -165,10 +169,27 @@ namespace minesweeper.Models
 			}
         }
 
+        /// <summary>
+        /// Replace Mine if first click
+        /// The first click should never be a mine, so replace mine if that is the case
+        /// </summary>
+        /// <param name="row"> Row </param>
+        /// <param name="col"> Column </param>
         private void ReplaceMine(int row, int col)
 		{
+            // Unset mine at coordinate
+            foreach(Tuple<int,int> adjacent in GetAdjacentCoords(new Tuple<int, int>(row, col)))
+            {
+                // Reduce adjacency count for each adjacent cell
+                grid[adjacent.Item1, adjacent.Item2].Adjacent--;
+                grid[adjacent.Item1, adjacent.Item2].SetAdjacentString();
+            }
+            grid[row, col].Mine = false; // Remove mine
+
             // Add new random coordinate
-            
+            int n = mineCoords.Count;
+            SetRandomCoordinates(n + 1, mineCoords);
+            PlaceMine(mineCoords[n - 1]);
 		}
 
         /// <summary>
@@ -184,13 +205,34 @@ namespace minesweeper.Models
 				Tuple<int, int> coord = new Tuple<int, int>(random.Next(nRows), random.Next(nCols));
 				do
 				{
-					// Run while non-unique coordinates
 					coord = new Tuple<int, int>(random.Next(nRows), random.Next(nCols));
-				} while (coords.Contains(coord));
+				} while (coords.Contains(coord)); // Run while non-unique coordinates
 
-				// Add coord
-				coords.Add(coord);
+                // Add coord
+                coords.Add(coord);
 			}
 		}
+
+        /// <summary>
+        /// Handle uncover
+        /// </summary>
+        /// <param name="sender"> Sender </param>
+        /// <param name="ce"> Cell Event Arguments </param>
+        private void HandleUncover(object sender, CellEventArgs ce)
+        {
+            // Check first click
+            if(firstSelect) {
+                if (ce.Mine) { ReplaceMine(((Cell)sender).Row, ((Cell)sender).Col); }
+                firstSelect = false; // Update first select value
+            } 
+
+            // Check if none adjacent
+            if(((Cell)sender).Adjacent == 0)
+            {
+
+            }
+        }
+
+
 	}
 }

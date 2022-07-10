@@ -16,8 +16,8 @@ namespace minesweeper.Models
         string adjacentStr; // Number of adjacent mines as string
         int row, col; // Coordinates of cell in grid
 
-        public event EventHandler<CellEventArgs> UncoverCell; // Uncover cell by logic
-
+        public event EventHandler<CellEventArgs> LogicUncoverCell; // Uncover cell by logic
+        public event EventHandler<CellEventArgs> UserUncoverCell;  // User uncovers cell
 
         /// <summary>
         /// Cell constructor
@@ -71,11 +71,22 @@ namespace minesweeper.Models
             adjacentStr = GetAdjacentString();
 		}
 
-        public void Uncover()
+        /// <summary>
+        /// Uncover by user
+        /// </summary>
+        public void UncoverByUser()
         {
-            // Update covered
+            covered = false;      // Update covered status
+            RaiseUncoverByUser(); // Raise event 
+        }
+
+        /// <summary>
+        /// Uncover by logic
+        /// </summary>
+        public void UncoverByLogic()
+        {
             covered = false;
-            //More logic
+            RaiseUncoverByLogic();
         }
 
         public void Flag()
@@ -86,6 +97,22 @@ namespace minesweeper.Models
         public void Unflag()
         {
             flagged = false;
+        }
+
+        /// <summary>
+        /// Raise cell uncovered by user event
+        /// </summary>
+        protected virtual void RaiseUncoverByUser()
+        {
+            UserUncoverCell?.Invoke(this, new CellEventArgs("Cell uncovered by user!", mine));
+        }
+
+        /// <summary>
+        /// Raise cell uncovered by logic event
+        /// </summary>
+        protected virtual void RaiseUncoverByLogic()
+        {
+            LogicUncoverCell?.Invoke(this, new CellEventArgs("Cell uncovered by logic!", mine));
         }
     }
 }

@@ -22,6 +22,16 @@
 	string CellContent = string.Empty;
 
 	/// <summary>
+	/// On initialization of component
+	/// !Only called on first render
+	/// </summary>
+	protected override void OnInitialized()
+	{
+		// Subscribe events
+		Cell_.LogicUncoverCell += HandleUncoverByLogic;
+	}
+
+	/// <summary>
 	/// Called when parameters are set
 	/// </summary>
 	protected override void OnParametersSet()
@@ -41,7 +51,7 @@
 		{
 			if(args.Button == 0) // Left Click
 			{
-				Cell_.Uncover(); // Uncover Cell
+				Cell_.UncoverByUser(); // Uncover Cell
 				UncoverUI(Cell_.AdjacentStr);
 			}
 			else if(args.Button == 2) // Right Click
@@ -69,7 +79,6 @@
 			CellContent = string.Empty;
 		}
 		else { // Cell is not a mine, show number of adjacent
-
 			CellStatus = $"uncovered {adjacentNum}";
 			CellContent = Cell_.Adjacent != 0 ? Cell_.Adjacent.ToString() : string.Empty;	
 		}
@@ -106,5 +115,15 @@
 			CellStatus = Cell_.Mine ? "mine" : $"uncovered {adjacentNum}" ;
 			CellContent = Cell_.Adjacent != 0 ? Cell_.Adjacent.ToString() : string.Empty;
 		}
+	}
+
+	/// <summary>
+	/// Uncover cell by logic and not click
+	/// </summary>
+	/// <param name="sender"> Sender cell </param>
+	/// <param name="ce"> Cell Event Args </param>
+	private void HandleUncoverByLogic(object sender, CellEventArgs ce)
+	{
+		UncoverUI(((Cell)sender).AdjacentStr);
 	}
 }

@@ -57,10 +57,13 @@
 		NewGame(me.NewMode);
 
 		// Handle timer reset
-		if(!timer.Paused)
+		if(timer.Paused)
 		{
-			timer.StartTimer();
+			timer.UnpauseUI();
+			grid.OnUnpause();
 		}
+
+		timer.StartTimer(); // Start timer
 	}
 
 	/// <summary>

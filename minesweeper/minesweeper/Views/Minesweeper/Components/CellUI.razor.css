@@ -1,7 +1,7 @@
 ﻿/*Cell Styling*/
 .cell {
     background-color: rgba(137, 148, 153, 0.8);
-    transition: all ease 0.3s;
+    transition: all ease 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
