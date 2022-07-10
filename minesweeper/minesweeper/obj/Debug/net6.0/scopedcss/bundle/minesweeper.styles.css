@@ -30,6 +30,9 @@
 .cell.uncovered.fourplus[b-dkutulbe5c] { /* Four or more Adjacent */
     background-color: rgba(255, 40, 50, 0.9);
 }
+.cell.mine[b-dkutulbe5c] { /* Cell is a mine */
+    background-color: rgb(0, 0, 0);
+}
 
 /*Cell Content Styling*/
 .cell h3[b-dkutulbe5c] {

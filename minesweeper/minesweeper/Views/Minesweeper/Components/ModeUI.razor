@@ -52,8 +52,8 @@
 	// List of modes and selected mode
 	Mode[] modes =
 			{
-			new Mode("easy", false),
-			new Mode("medium", true),
+			new Mode("easy", true),
+			new Mode("medium", false),
 			new Mode("hard", false)
 		};
 	Mode selectedMode;
@@ -63,7 +63,7 @@
 	/// </summary>
 	public ModeUI()
 	{
-		selectedMode = modes[1]; // Set selected mode
+		selectedMode = modes[0]; // Set selected mode
 	}
 
 	/// <summary>

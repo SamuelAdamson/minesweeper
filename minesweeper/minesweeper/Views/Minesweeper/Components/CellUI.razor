@@ -21,22 +21,13 @@
 	string CellStatus = "covered";
 	string CellContent = string.Empty;
 
-
-	/// <summary>
-	/// Called after initialization
-	/// </summary>
-	protected override void OnInitialized()
-	{
-	
-	}
-
 	/// <summary>
 	/// Called when parameters are set
 	/// </summary>
 	protected override void OnParametersSet()
 	{
 		// When new parameters set, reset cell
-		ResetUI();
+		ResetUI(Cell_.AdjacentStr);
 	}
 
 
@@ -50,14 +41,14 @@
 		{
 			if(args.Button == 0) // Left Click
 			{
-				string adjacent = Cell_.Uncover(); // Uncover Cell
-				UncoverUI(adjacent);
+				Cell_.Uncover(); // Uncover Cell
+				UncoverUI(Cell_.AdjacentStr);
 			}
 			else if(args.Button == 2) // Right Click
 			{
 				if(Cell_.Flagged) { // Unflag cell 
 					Cell_.Unflag();
-					ResetUI();
+					UnflagUI();
 				}
 				else { // Flag cell
 					Cell_.Flag();
@@ -73,11 +64,13 @@
 	/// </summary>
 	/// <param name="adjacentNum"> Number of Adjacent Cells </param>
 	private void UncoverUI(string adjacentNum) {
-		CellStatus = $"uncovered {adjacentNum}";
 		if(Cell_.Mine) { // Cell is a mine
-				// TODO
+			CellStatus = "mine";
+			CellContent = string.Empty;
 		}
 		else { // Cell is not a mine, show number of adjacent
+
+			CellStatus = $"uncovered {adjacentNum}";
 			CellContent = Cell_.Adjacent != 0 ? Cell_.Adjacent.ToString() : string.Empty;	
 		}
 	}
@@ -92,11 +85,26 @@
 	}
 
 	/// <summary>
-	/// Reset Cell UI
+	/// Unflag Cell on UI Side
 	/// </summary>
-	private void ResetUI() 
+	private void UnflagUI()
 	{
 		CellStatus = "covered";
-		CellContent = string.Empty;
+		CellContent = string.Empty;		
+	}
+
+	/// <summary>
+	/// Reset Cell UI
+	/// </summary>
+	private void ResetUI(string adjacentNum) 
+	{
+		if(Cell_.Covered) { // Covered
+			CellStatus = Cell_.Flagged ? "covered flag" : "covered";
+			CellContent = Cell_.Flagged ? "\u2691" : string.Empty;
+		} 
+		else { // Uncovered
+			CellStatus = Cell_.Mine ? "mine" : $"uncovered {adjacentNum}" ;
+			CellContent = Cell_.Adjacent != 0 ? Cell_.Adjacent.ToString() : string.Empty;
+		}
 	}
 }

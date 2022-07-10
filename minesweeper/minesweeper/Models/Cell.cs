@@ -13,6 +13,7 @@ namespace minesweeper.Models
         bool covered; // Is the cell covered
         bool flagged; // Is the cell flagged
         int adjacent; // Number of adjacent mines
+        string adjacentStr; // Number of adjacent mines as string
         int row, col; // Coordinates of cell in grid
 
         public event EventHandler<CellEventArgs> UncoverCell; // Uncover cell by logic
@@ -33,16 +34,16 @@ namespace minesweeper.Models
             mine = false;
             covered = true;
             flagged = false;
-            Random rand = new Random(); //DEBUG
-            adjacent = rand.Next(5);
-            // adjacent = 0;
+			adjacent = 0;
+            SetAdjacentString();
         }
 
         // Access controlled
-        public bool Covered { get => covered; }
-        public bool Mine { get => mine; }
-        public bool Flagged { get => flagged; }
+        public bool Mine { get => mine; set => mine = value; }
         public int Adjacent { get => adjacent; set => adjacent = value; }
+        public bool Covered { get => covered; }
+        public bool Flagged { get => flagged; }
+        public string AdjacentStr { get => adjacentStr; }
         public int Row { get => row; }
         public int Col { get => col; }
 
@@ -62,13 +63,19 @@ namespace minesweeper.Models
             }
         }
 
-        public string Uncover()
+        /// <summary>
+        /// Set adjacent string
+        /// </summary>
+        public void SetAdjacentString()
+		{
+            adjacentStr = GetAdjacentString();
+		}
+
+        public void Uncover()
         {
             // Update covered
             covered = false;
             //More logic
-
-            return GetAdjacentString();
         }
 
         public void Flag()
@@ -79,11 +86,6 @@ namespace minesweeper.Models
         public void Unflag()
         {
             flagged = false;
-        }
-
-        public void SetMine()
-        {
-
         }
     }
 }
