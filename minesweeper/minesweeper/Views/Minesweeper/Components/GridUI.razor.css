@@ -17,10 +17,16 @@
     background-color: rgb(127, 138, 143);
     color: rgb(255,255,255);
 }
-.cover.paused {
+.cover.active {
     z-index: 3;
     width: 100%;
     height: 100%;
+}
+.loader {
+    
+}
+.loader.active {
+
 }
 .cover h3 {
     margin: 0;

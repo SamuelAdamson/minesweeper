@@ -7,7 +7,7 @@
 
 <div class="GameUI">
 	<ModeUI @ref="modeSelector" />
-	<GridUI @ref="grid" Game_=@game/>
+	<GridUI @ref="grid" Game_=@game />
 	<TimerUI @ref="timer" />
 </div>
 
@@ -74,7 +74,15 @@
 	{
 		// Assign new game
 		game = new Game(mode);
-		StateHasChanged(); // Change state.
+		
+
+		/* TODO
+		 * Get all control buttons ie Mode Change, pause, reset in this component
+		 * Calling this state has changed is causing very bizarre behavior
+		 * We are getting many constructor calls for some reason
+		 * REMOVE ALL CALLS TO STATEHASCHANGED()
+		 */
+		StateHasChanged(); 
 
 		// Garbage collector
 		GC.Collect(); // Clean up old object

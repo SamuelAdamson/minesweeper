@@ -62,8 +62,10 @@
         <img src="~/img/dfs.gif" alt="dfs" />
         <p>
             So, which method is used in this implementation of minesweeper? It turns out that the performance of both algorithms in this situation are fairly similar. 
-            As far as time complexity, we must visit each visit the same number of nearby nodes in both cases ...
+            At first glance, the performance seems even identical. When analyzing the algorithms, both approaches yield a <strong>linear time complexity</strong> 
+            as each cell which will be uncovered must only be visited once. However, there is more to the story here.
         </p>
+        <h4 class="display-6 pt-3"> empirical analysis </h4>
     </div>
 
     <div class="d-flex align-items-center flex-column pe-4 ps-4">

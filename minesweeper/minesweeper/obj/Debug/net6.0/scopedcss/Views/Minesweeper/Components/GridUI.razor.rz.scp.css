@@ -17,10 +17,16 @@
     background-color: rgb(127, 138, 143);
     color: rgb(255,255,255);
 }
-.cover.paused[b-34r659u6dw] {
+.cover.active[b-34r659u6dw] {
     z-index: 3;
     width: 100%;
     height: 100%;
+}
+.loader[b-34r659u6dw] {
+    
+}
+.loader.active[b-34r659u6dw] {
+
 }
 .cover h3[b-34r659u6dw] {
     margin: 0;
