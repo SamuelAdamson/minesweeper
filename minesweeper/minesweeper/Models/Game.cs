@@ -37,7 +37,6 @@ namespace minesweeper.Models
         /// <param name="mode"> Mode [easy, medium, hard] </param>
         public Game(string mode)
         {
-            System.Diagnostics.Debug.WriteLine("Constructor");
             // Initialize random generator
             random = new Random();
             firstSelect = true; // First selection is set to true
@@ -165,9 +164,9 @@ namespace minesweeper.Models
 			// Set random coordinates
             mineCoords = new HashSet<Tuple<int, int>>(); // Create list of coordinates
             SetRandomCoordinates(numMines, mineCoords, false); // Set random coords, pass mineCoords by ref
-
+            
             // Iterate coordinates
-            foreach(Tuple<int,int> coord in mineCoords)
+            foreach (Tuple<int,int> coord in mineCoords)
 			{
                 PlaceMine(coord);
 			}
