@@ -37,6 +37,7 @@ namespace minesweeper.Models
         /// <param name="mode"> Mode [easy, medium, hard] </param>
         public Game(string mode)
         {
+            System.Diagnostics.Debug.WriteLine("HEREREREERER");
             // Initialize random generator
             random = new Random();
             firstSelect = true; // First selection is set to true

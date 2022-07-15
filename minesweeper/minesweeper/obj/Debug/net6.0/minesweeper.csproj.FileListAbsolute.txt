@@ -25,8 +25,7 @@ D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\ref\minesweeper
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.pdb
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.genruntimeconfig.cache
 D:\projects\minesweeper\minesweeper\minesweeper\bin\Debug\net6.0\web.config
-D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\CellUI.razor.rz.scp.css
-D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\ModeUI.razor.rz.scp.css
-D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\TimerUI.razor.rz.scp.css
-D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\GameUI.razor.rz.scp.css
-D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\GridUI.razor.rz.scp.css
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Cell\CellUI.razor.rz.scp.css
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Game\GameUI.razor.rz.scp.css
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Grid\GridUI.razor.rz.scp.css
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Timer\TimerUI.razor.rz.scp.css

@@ -1,0 +1,194 @@
+﻿@*
+	Game UI Component
+	Samuel Adamson
+*@
+@using System.Threading;
+@using Microsoft.AspNetCore.Components.Web;
+@using minesweeper.Models;
+@using minesweeper.Models.CustomEventArgs;
+@using minesweeper.Views.Minesweeper.Components.Grid;
+@using minesweeper.Views.Minesweeper.Components.Timer;
+
+<div class="GameUI">
+	<!-- Mode selection -->
+	<div class="ModeUI">
+		<div class="btn-group btn-group-lg" role="group" aria-label="Mode Selection">
+		@foreach (Mode mode in modes)
+		{
+			<button @onclick="(() => OnModeChange(mode))" class="btn mode @mode.Status">@mode.Name</button>
+		}
+		</div>
+	</div>
+
+	<!-- Gameplay grid -->
+	<GridUI @ref="grid" Game_=@game />
+	
+	<!-- Gameplay control (Pause and Reset) -->
+	<div class="Control">
+		<TimerUI @ref=timer/>
+		<div class="timer-row">
+			<button class="btn timer-btn" @onclick="OnPause">@pauseMsg</button>
+			<button class="btn timer-btn" @onclick="OnReset">reset</button>
+		</div>
+	</div>
+
+</div>
+
+@code {
+	// Fields
+	bool paused;
+	string pauseMsg;
+
+	// List of modes and selected mode
+	Mode[] modes =
+			{
+			new Mode("easy", true),
+			new Mode("medium", false),
+			new Mode("hard", false)
+		};
+	Mode selectedMode;
+
+
+	// Grid, Timer, and Game reference
+	GridUI grid;
+	TimerUI timer;
+	Game game;
+
+
+	/// <summary>
+	/// Constructor -- called before render
+	/// </summary>
+	public GameUI()
+	{
+		// Create new game
+		game = new Game("easy");
+
+		// Initialize
+		InitializeModes();
+		InitializeControl();
+	}
+
+	/// <summary>
+	/// Initialize mode related fields
+	/// </summary>
+	private void InitializeModes() 
+	{
+		selectedMode = modes[0]; // Set selected mode
+	}
+
+	/// <summary>
+	/// Initialize control related fields
+	/// </summary>
+	private void InitializeControl()
+	{
+		// Pause status and pause message
+		paused = false;
+		pauseMsg = "pause";
+	}
+
+
+
+
+
+	/// <summary>
+	/// On click for change mode
+	/// </summary>
+	/// <param name="clickedMode"> Newly Selected Mode </param>
+	private void OnModeChange(Mode clickedMode)
+	{
+		if(!clickedMode.Selected) // Check mode not clicked
+		{
+			// Deselect old mode and select new
+			selectedMode.Selected = false;
+			clickedMode.Selected = true;
+			selectedMode = clickedMode;
+
+			HandleModeChange(clickedMode.Name);
+		}
+	}
+
+
+	private void HandleModeChange(string newMode)
+	{
+		// Reset timer
+		timer.StopTimer();
+		timer.ResetTimer();
+
+		// TODO Make asynchronous
+		// Change mode
+		NewGame(newMode);
+
+		if (paused) { HandleUnpause(); }
+		else { timer.StartTimer(); }
+	}
+
+
+	/// <summary>
+	/// Create new game, update UI state
+	/// </summary>
+	/// <param name="mode"> Mode String </param>
+	private void NewGame(string mode)
+	{
+		// Assign new game
+		game = new Game(mode);
+
+		// Garbage collector
+		GC.Collect(); // Clean up old object
+	}
+
+
+	/// <summary>
+	/// On click for the pause button
+	/// </summary>
+	private void OnPause()
+	{
+		if(paused) { HandleUnpause(); } // Already paused so unpause
+		else { HandlePause(); }	// Unpaused so pause
+	}
+
+	/// <summary>
+	/// Handle Pause
+	/// </summary>
+	private void HandlePause()
+	{
+		// Pause timer and grid
+		timer.StopTimer();
+		grid.OnPause();
+
+		// Set pause button
+		paused = true;
+		pauseMsg = "unpause";
+	}
+
+	/// <summary>
+	/// Handle Unpause
+	/// </summary>
+	private void HandleUnpause()
+	{
+		// Unpause Grid
+		timer.StartTimer();
+		grid.OnUnpause();
+
+		// Set pause button
+		paused = false;
+		pauseMsg = "pause";
+
+	}
+
+	/// <summary>
+	/// On click for the reset button
+	/// </summary>
+	private void OnReset()
+	{
+		// Reset timer
+		timer.StopTimer();
+		timer.ResetTimer();
+
+		// TODO Make this baddy asynchronous
+		// Create new game
+		NewGame(game.Mode);
+
+		if(paused) { HandleUnpause(); }
+		else { timer.StartTimer(); }
+	}
+}

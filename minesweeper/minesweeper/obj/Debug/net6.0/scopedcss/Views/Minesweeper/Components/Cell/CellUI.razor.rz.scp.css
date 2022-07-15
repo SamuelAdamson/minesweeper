@@ -1,40 +1,40 @@
 /*Cell Styling*/
-.cell[b-dkutulbe5c] {
+.cell[b-oqhvrjdoen] {
     background-color: rgba(137, 148, 153, 0.8);
     transition: all ease 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.cell.covered[b-dkutulbe5c] {
+.cell.covered[b-oqhvrjdoen] {
     filter: brightness(70%);
     cursor: pointer;
 }
-.cell.covered:hover[b-dkutulbe5c] {
+.cell.covered:hover[b-oqhvrjdoen] {
     filter: brightness(40%);
 }
-.cell.uncovered[b-dkutulbe5c] {
+.cell.uncovered[b-oqhvrjdoen] {
     background-color: rgba(137, 148, 153, 0.45);
     cursor: default;
 }
-.cell.uncovered.one[b-dkutulbe5c] { /* One Adjacent */
+.cell.uncovered.one[b-oqhvrjdoen] { /* One Adjacent */
     background-color: rgba(154, 205, 50, 0.9);
 }
-.cell.uncovered.two[b-dkutulbe5c] { /* Two Adjacent */
+.cell.uncovered.two[b-oqhvrjdoen] { /* Two Adjacent */
     background-color: rgba(218, 175, 32, 0.9);
 }
-.cell.uncovered.three[b-dkutulbe5c] { /* Three Adjacent */
+.cell.uncovered.three[b-oqhvrjdoen] { /* Three Adjacent */
     background-color: rgba(255, 127, 80, 0.9);
 }
-.cell.uncovered.fourplus[b-dkutulbe5c] { /* Four or more Adjacent */
+.cell.uncovered.fourplus[b-oqhvrjdoen] { /* Four or more Adjacent */
     background-color: rgba(255, 40, 50, 0.9);
 }
-.cell.mine[b-dkutulbe5c] { /* Cell is a mine */
+.cell.mine[b-oqhvrjdoen] { /* Cell is a mine */
     background-color: rgb(0, 0, 0);
 }
 
 /*Cell Content Styling*/
-.cell h3[b-dkutulbe5c] {
+.cell h3[b-oqhvrjdoen] {
     color: rgba(0,0,0,0.8);
     margin: 0;
     padding: 0;
@@ -42,7 +42,7 @@
 }
 
 /* Cell Sizing/Responsiveness*/
-.cell[b-dkutulbe5c] {
+.cell[b-oqhvrjdoen] {
     /* Different cell options for height/width */
     --easy: 3vmax;
     --medium: 2.5vmax;
@@ -53,7 +53,7 @@
     margin: 0.15vmax;
 }
 @media (max-width: 460px) {
-    .cell[b-dkutulbe5c] {
+    .cell[b-oqhvrjdoen] {
         /*Rotate Grid*/
         transform: rotate(90deg);
         white-space: nowrap;

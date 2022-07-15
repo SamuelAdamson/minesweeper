@@ -1,41 +1,41 @@
-/* _content/minesweeper/Views/Minesweeper/Components/CellUI.razor.rz.scp.css */
+/* _content/minesweeper/Views/Minesweeper/Components/Cell/CellUI.razor.rz.scp.css */
 /*Cell Styling*/
-.cell[b-dkutulbe5c] {
+.cell[b-oqhvrjdoen] {
     background-color: rgba(137, 148, 153, 0.8);
     transition: all ease 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.cell.covered[b-dkutulbe5c] {
+.cell.covered[b-oqhvrjdoen] {
     filter: brightness(70%);
     cursor: pointer;
 }
-.cell.covered:hover[b-dkutulbe5c] {
+.cell.covered:hover[b-oqhvrjdoen] {
     filter: brightness(40%);
 }
-.cell.uncovered[b-dkutulbe5c] {
+.cell.uncovered[b-oqhvrjdoen] {
     background-color: rgba(137, 148, 153, 0.45);
     cursor: default;
 }
-.cell.uncovered.one[b-dkutulbe5c] { /* One Adjacent */
+.cell.uncovered.one[b-oqhvrjdoen] { /* One Adjacent */
     background-color: rgba(154, 205, 50, 0.9);
 }
-.cell.uncovered.two[b-dkutulbe5c] { /* Two Adjacent */
+.cell.uncovered.two[b-oqhvrjdoen] { /* Two Adjacent */
     background-color: rgba(218, 175, 32, 0.9);
 }
-.cell.uncovered.three[b-dkutulbe5c] { /* Three Adjacent */
+.cell.uncovered.three[b-oqhvrjdoen] { /* Three Adjacent */
     background-color: rgba(255, 127, 80, 0.9);
 }
-.cell.uncovered.fourplus[b-dkutulbe5c] { /* Four or more Adjacent */
+.cell.uncovered.fourplus[b-oqhvrjdoen] { /* Four or more Adjacent */
     background-color: rgba(255, 40, 50, 0.9);
 }
-.cell.mine[b-dkutulbe5c] { /* Cell is a mine */
+.cell.mine[b-oqhvrjdoen] { /* Cell is a mine */
     background-color: rgb(0, 0, 0);
 }
 
 /*Cell Content Styling*/
-.cell h3[b-dkutulbe5c] {
+.cell h3[b-oqhvrjdoen] {
     color: rgba(0,0,0,0.8);
     margin: 0;
     padding: 0;
@@ -43,7 +43,7 @@
 }
 
 /* Cell Sizing/Responsiveness*/
-.cell[b-dkutulbe5c] {
+.cell[b-oqhvrjdoen] {
     /* Different cell options for height/width */
     --easy: 3vmax;
     --medium: 2.5vmax;
@@ -54,7 +54,7 @@
     margin: 0.15vmax;
 }
 @media (max-width: 460px) {
-    .cell[b-dkutulbe5c] {
+    .cell[b-oqhvrjdoen] {
         /*Rotate Grid*/
         transform: rotate(90deg);
         white-space: nowrap;
@@ -64,75 +64,22 @@
         margin: 0.22vmax;
     }
 }
-/* _content/minesweeper/Views/Minesweeper/Components/GameUI.razor.rz.scp.css */
-.GameUI[b-oycpind3ta] {
+/* _content/minesweeper/Views/Minesweeper/Components/Game/GameUI.razor.rz.scp.css */
+
+/* Game */
+.GameUI[b-qbuzaxtm33] {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     transition: all ease 0.3s;
 }
-/* _content/minesweeper/Views/Minesweeper/Components/GridUI.razor.rz.scp.css */
-.grid-wrapper[b-34r659u6dw] {
-    position: relative;
-    box-sizing: border-box;
-}
-.grid[b-34r659u6dw] {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.cover[b-34r659u6dw] {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 0;
-    width: 0;
-    background-color: rgb(127, 138, 143);
-    color: rgb(255,255,255);
-}
-.cover.active[b-34r659u6dw] {
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-}
-.loader[b-34r659u6dw] {
-    
-}
-.loader.active[b-34r659u6dw] {
 
-}
-.cover h3[b-34r659u6dw] {
-    margin: 0;
-    padding: 0;
-}
-.cell-row[b-34r659u6dw] {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: 100%;
-}
 
-/*Responsiveness*/
-@media (max-width: 460px) {
-    .grid-wrapper[b-34r659u6dw] {
-        writing-mode: vertical-rl;
-        white-space: nowrap;
-        transform: rotate(180deg);
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .cover h3[b-34r659u6dw] {
-        transform: rotate(90deg);
-    }
-}
-/* _content/minesweeper/Views/Minesweeper/Components/ModeUI.razor.rz.scp.css */
-.ModeUI[b-8mb7qyzdep] {
+/* Mode */
+.ModeUI[b-qbuzaxtm33] {
     padding: 1rem;
 }
-
-.btn.mode[b-8mb7qyzdep] {
+.ModeUI .btn.mode[b-qbuzaxtm33] {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     padding-right: 1rem;
@@ -141,31 +88,29 @@
     margin-right: 0.5rem;
     transition: all ease 0.5s;
 }
-.btn.mode.unselected[b-8mb7qyzdep] {
+.ModeUI .btn.mode.unselected[b-qbuzaxtm33] {
     background-color: transparent;
     color: rgba(0,0,0,0.7);
 }
-.btn.mode.selected[b-8mb7qyzdep],
-.btn.mode:hover[b-8mb7qyzdep] {
+.ModeUI .btn.mode.selected[b-qbuzaxtm33],
+.ModeUI .btn.mode:hover[b-qbuzaxtm33] {
     background-color: rgba(0,0,0,0.7);
     color: rgb(255,255,255);
 }
-/* _content/minesweeper/Views/Minesweeper/Components/TimerUI.razor.rz.scp.css */
-/*Timer UI Styling*/
-.TimerUI[b-g4r5ful6hn] {
+
+
+/* Control */
+.Control[b-qbuzaxtm33] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.timer-row[b-g4r5ful6hn] {
+.timer-row[b-qbuzaxtm33] {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-h3.display-6.time[b-g4r5ful6hn] {
-    padding-left: 0;
-}
-.btn.timer-btn[b-g4r5ful6hn] {
+.btn.timer-btn[b-qbuzaxtm33] {
     height: fit-content;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -177,9 +122,69 @@ h3.display-6.time[b-g4r5ful6hn] {
     color: rgba(0,0,0,0.7);
     transition: all ease 0.5s;
 }
-.btn.timer-btn:hover[b-g4r5ful6hn] {
+.btn.timer-btn:hover[b-qbuzaxtm33] {
     background-color: rgba(0,0,0,0.7);
     color: rgb(255,255,255);
+}
+/* _content/minesweeper/Views/Minesweeper/Components/Grid/GridUI.razor.rz.scp.css */
+.grid-wrapper[b-ty2ej5xzox] {
+    position: relative;
+    box-sizing: border-box;
+}
+.grid[b-ty2ej5xzox] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cover[b-ty2ej5xzox] {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    width: 0;
+    background-color: rgb(127, 138, 143);
+    color: rgb(255,255,255);
+}
+.cover.active[b-ty2ej5xzox] {
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+.loader[b-ty2ej5xzox] {
+    
+}
+.loader.active[b-ty2ej5xzox] {
+
+}
+.cover h3[b-ty2ej5xzox] {
+    margin: 0;
+    padding: 0;
+}
+.cell-row[b-ty2ej5xzox] {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+/*Responsiveness*/
+@media (max-width: 460px) {
+    .grid-wrapper[b-ty2ej5xzox] {
+        writing-mode: vertical-rl;
+        white-space: nowrap;
+        transform: rotate(180deg);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .cover h3[b-ty2ej5xzox] {
+        transform: rotate(90deg);
+    }
+}
+/* _content/minesweeper/Views/Minesweeper/Components/Timer/TimerUI.razor.rz.scp.css */
+h3.display-6.time[b-8rv6fu0jg0] {
+    padding-left: 0;
 }
 /* _content/minesweeper/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
