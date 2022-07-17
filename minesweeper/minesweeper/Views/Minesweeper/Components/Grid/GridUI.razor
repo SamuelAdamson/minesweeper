@@ -8,7 +8,7 @@
 
 <div class="grid-wrapper">
 	<div class="cover @CoverStatus">
-		<h3>@CoverContent</h3>
+		<h3>@CoverMessage</h3>
 	</div>
 	<div class="grid">
 	@for(int i = 0; i < Game_.NRows; i++)
@@ -28,7 +28,7 @@
 
 	// Cover/Loader status and content
 	string CoverStatus = string.Empty;
-	string CoverContent = string.Empty;
+	string CoverMessage = string.Empty;
 
 	/// <summary>
 	/// Pause UI
@@ -36,7 +36,7 @@
 	public void OnPause()
 	{
 		CoverStatus = "active";
-		CoverContent = "paused";
+		CoverMessage = "paused";
 	}
 
 	/// <summary>
@@ -45,6 +45,6 @@
 	public void OnUnpause()
 	{
 		CoverStatus = string.Empty;
-		CoverContent = string.Empty;
+		CoverMessage = string.Empty;
 	}
 }

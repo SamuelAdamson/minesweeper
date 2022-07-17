@@ -2,7 +2,6 @@
  * Samuel Adamson
  */
 
-
 /// <summary>
 /// Mode Class
 /// </summary>

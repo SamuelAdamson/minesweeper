@@ -22,22 +22,13 @@
 	string CellContent = string.Empty;
 
 	/// <summary>
-	/// On initialization of component
-	/// !Only called on first render
-	/// </summary>
-	protected override void OnInitialized()
-	{
-		// Subscribe events
-		Cell_.LogicUncoverCell += HandleUncoverByLogic;
-	}
-
-	/// <summary>
 	/// Called when parameters are set
 	/// </summary>
 	protected override void OnParametersSet()
 	{
-		// When new parameters set, reset cell
+		// When new parameters set, reset cell/resubscribe event
 		ResetUI(Cell_.AdjacentStr);
+		Cell_.LogicUncoverCell += HandleUncoverByLogic;
 	}
 
 
@@ -125,5 +116,6 @@
 	private void HandleUncoverByLogic(object sender, CellEventArgs ce)
 	{
 		UncoverUI(((Cell)sender).AdjacentStr);
+		StateHasChanged();
 	}
 }

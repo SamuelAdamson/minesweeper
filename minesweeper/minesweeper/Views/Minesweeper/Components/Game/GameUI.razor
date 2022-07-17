@@ -87,9 +87,6 @@
 	}
 
 
-
-
-
 	/// <summary>
 	/// On click for change mode
 	/// </summary>
@@ -107,14 +104,16 @@
 		}
 	}
 
-
+	/// <summary>
+	/// Handle Mode Change
+	/// </summary>
+	/// <param name="newMode"></param>
 	private void HandleModeChange(string newMode)
 	{
 		// Reset timer
 		timer.StopTimer();
 		timer.ResetTimer();
 
-		// TODO Make asynchronous
 		// Change mode
 		NewGame(newMode);
 
