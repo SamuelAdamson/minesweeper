@@ -15,7 +15,7 @@ namespace minesweeper.Models
         int adjacent; // Number of adjacent mines
         string adjacentStr; // Number of adjacent mines as string
         int row, col; // Coordinates of cell in grid
-        bool _queued; // Value to assist in search
+        bool _stored; // Value to assist in search
 
         public event EventHandler<CellEventArgs> LogicUncoverCell; // Uncover cell by logic
         public event EventHandler<CellEventArgs> UserUncoverCell;  // User uncovers cell
@@ -36,7 +36,7 @@ namespace minesweeper.Models
             covered = true;
             flagged = false;
 			adjacent = 0;
-            _queued = false;
+            _stored = false;
             SetAdjacentString();
         }
 
@@ -48,7 +48,7 @@ namespace minesweeper.Models
         public string AdjacentStr { get => adjacentStr; }
         public int Row { get => row; }
         public int Col { get => col; }
-        public bool Queued { get => _queued; set => _queued = value; }
+        public bool Stored { get => _stored; set => _stored = value; }
 
 
         /// <summary>

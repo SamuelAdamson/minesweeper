@@ -64,21 +64,21 @@ namespace minesweeper.Models
                 // 10 Mines
                 nRows = 8;
                 nCols = 12;
-                numMines = 0;
+                numMines = 10;
 			}
             else if(modeStr == "medium") {
                 // 12x16 Grid
                 // 40 Mines
                 nRows = 12;
                 nCols = 16;
-                numMines = 0;
+                numMines = 40;
             }
             else {
                 // 16x20 Grid
                 // 80 Mines
                 nRows = 16;
                 nCols = 20;
-                numMines = 0;
+                numMines = 80;
 			}
 		}
 
@@ -233,7 +233,7 @@ namespace minesweeper.Models
             }
 
             if (((Cell)sender).Mine) { // Check if mine
-
+                // Loss
             }
             else { // Safe click
                 // Check if none adjacent
@@ -245,30 +245,30 @@ namespace minesweeper.Models
                 if (((Cell)sender).Adjacent == 0)
                 {
                     BreadthFirstSearch(new Tuple<int, int>(((Cell)sender).Row, ((Cell)sender).Col));
-                    // DepthFirstSearch(new Tuple<int, int>(((Cell)sender).Row, ((Cell)sender).Col));
+                    //DepthFirstSearch(new Tuple<int, int>(((Cell)sender).Row, ((Cell)sender).Col));
                 }
+
+                // Check Win
             }
         }
 
         /// <summary>
-        /// Breadth First Search
+        /// Breadth First Search (BFS)
         /// Search and uncover cells using BFS
         /// </summary>
         /// <param name="source"></param>
         private void BreadthFirstSearch(Tuple<int,int> source)
         {
-            // Linked list -- queue
-            LinkedList<Tuple<int, int>> queue = new LinkedList<Tuple<int, int>>(
+            // Queue
+            // O(1) enqueue-ing and dequeue-ing
+            Queue<Tuple<int, int>> queue = new Queue<Tuple<int, int>>(
                 GetAdjacentCoords(source)); // Enqueue cells adjacent to source
 
             while (queue.Any()) // Run while queue is not empty
 			{
-				// Current coordinate
-				Tuple<int,int> coord = queue.First();
-                
-                // Remove coordinate from queue
-                grid[coord.Item1, coord.Item2].Queued = false;
-                queue.RemoveFirst();
+				// Dequeue current coordinate -- store and remove element from front of queue
+				Tuple<int,int> coord = queue.Dequeue();
+                grid[coord.Item1, coord.Item2].Stored = false;
 
                 // Uncover cell
                 grid[coord.Item1, coord.Item2].UncoverByLogic();
@@ -280,20 +280,53 @@ namespace minesweeper.Models
                     // NOTE - Get adjacent only includes covered cells, so we don't check here
                     foreach (Tuple<int, int> adj in GetAdjacentCoords(coord))
                     {
-                        if (!grid[adj.Item1, adj.Item2].Queued)  // No double queueing
+                        if (!grid[adj.Item1, adj.Item2].Stored)  // No double queueing
                         {
                             // Add to queue
-                            queue.AddLast(adj);
-                            grid[adj.Item1, adj.Item2].Queued = true;
+                            queue.Enqueue(adj);
+                            grid[adj.Item1, adj.Item2].Stored = true;
                         }
                     }
                 }
 			}
         }
 
+        /// <summary>
+        /// Depth First Search (DFS)
+        /// Search and uncover cells using DFS
+        /// </summary>
+        /// <param name="source"></param>
         private void DepthFirstSearch(Tuple<int,int> source)
         {
-            // TODO
+            // Stack
+            Stack<Tuple<int, int>> stack = new Stack<Tuple<int, int>>(
+                GetAdjacentCoords(source)); // Store adjacent coordinates in stack
+
+            while(stack.Any())
+            {
+                // Pop the top coordinate
+                Tuple<int, int> coord = stack.Pop();
+                grid[coord.Item1, coord.Item2].Stored = false;
+
+                // Uncover cell
+                grid[coord.Item1, coord.Item2].UncoverByLogic();
+
+                // If this cell has no adjacents
+                if (grid[coord.Item1, coord.Item2].Adjacent == 0)
+                {
+                    // Iterate adjacent cells that are still covered
+                    // NOTE - Get adjacent only includes covered cells, so we don't check here
+                    foreach (Tuple<int, int> adj in GetAdjacentCoords(coord))
+                    {
+                        if (!grid[adj.Item1, adj.Item2].Stored)  // Avoid storing multiple times
+                        {
+                            // Add to top of stack
+                            stack.Push(adj);
+                            grid[adj.Item1, adj.Item2].Stored = true;
+                        }
+                    }
+                }
+            }
         }
 	}
 }

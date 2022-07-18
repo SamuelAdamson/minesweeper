@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope = b-8rv6fu0jg0
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQWJvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Analysis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQW5hbHlzaXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

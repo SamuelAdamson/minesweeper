@@ -22,6 +22,11 @@ namespace minesweeper.Controllers
             return View();
         }
 
+        public IActionResult Analysis()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

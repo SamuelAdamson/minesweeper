@@ -63,9 +63,12 @@
         <p>
             So, which method is used in this implementation of minesweeper? It turns out that the performance of both algorithms in this situation are fairly similar. 
             At first glance, the performance seems even identical. When analyzing the algorithms, both approaches yield a <strong>linear time complexity</strong> 
-            as each cell which will be uncovered must only be visited once. However, there is more to the story here.
+            as each cell which will be uncovered must only be visited once. However, there is more to the story here. 
         </p>
-        <h4 class="display-6 pt-3"> empirical analysis </h4>
+        <p>
+            To better understand the performance of <strong>BFS</strong> and <strong>DFS</strong> in the context of minesweeper, I conducted empirical analysis on 
+            the two implementations. See the findings of the analysis <a asp-area="" asp-controller="Minesweeper" asp-action="Analysis">here</a> .
+        </p>
     </div>
 
     <div class="d-flex align-items-center flex-column pe-4 ps-4">
