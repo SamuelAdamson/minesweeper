@@ -7,9 +7,8 @@ namespace minesweeper.Models.CustomEventArgs
 {
     public class CellEventArgs : EventArgs
     {
-        // Event message
-        string message;
-        bool mine;
+        string message; // Event message
+        bool mine;  // Is the cell a mine
 
         public CellEventArgs(string message, bool mine)
 		{

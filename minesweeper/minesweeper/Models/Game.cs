@@ -21,15 +21,18 @@ namespace minesweeper.Models
         int nRows, nCols;
         Cell[,] grid;
 
-        // Number of flags used and mines
-        int numFlags;
-        int numMines;
+        // Number of flags used, mines, and safe cells
+        int numFlags, numMines;
+        int numSafe, numUncovered;
 
         // Coordinates of mines
         HashSet<Tuple<int,int>> mineCoords;
 
         // Random Generator
         Random random;
+
+        // Events
+        public event EventHandler<GameEndEventArgs> GameEnd;
 
         /// <summary>
         /// Minesweeper Constructor
@@ -43,6 +46,8 @@ namespace minesweeper.Models
 
             // Set values based on mode
             SetModeValues(mode);
+            numSafe = (nRows * nCols) - numMines; // Number of safe cells
+            numUncovered = 0; // Number of currently uncovered cells
             numFlags = 0; // No flags used at first
 
             // Initialize Cell Grid
@@ -233,9 +238,12 @@ namespace minesweeper.Models
             }
 
             if (((Cell)sender).Mine) { // Check if mine
-                // Loss
+                RaiseGameEnd(false);
             }
             else { // Safe click
+                // Iterate number of uncovered cells
+                numUncovered++;
+
                 // Check if none adjacent
                 /* If a cell is uncovered that is not adjacent to any mines,
                  *  then all cells adjacent to this cell are also uncovered.
@@ -248,8 +256,22 @@ namespace minesweeper.Models
                     //DepthFirstSearch(new Tuple<int, int>(((Cell)sender).Row, ((Cell)sender).Col));
                 }
 
-                // Check Win
+                // Check win
+                if(numUncovered >= numSafe)
+                {
+                    RaiseGameEnd(true);
+                }
             }
+        }
+
+        protected virtual void RaiseGameEnd(bool win)
+        {
+            // Set message based on win
+            string message = win ?
+                "you have successfully uncovered all safe squares" : "you have uncovered a mine";
+
+            // Invoke game end
+            GameEnd?.Invoke(this, new GameEndEventArgs(message, win));
         }
 
         /// <summary>
@@ -272,6 +294,7 @@ namespace minesweeper.Models
 
                 // Uncover cell
                 grid[coord.Item1, coord.Item2].UncoverByLogic();
+                numUncovered++;
 
                 // If this cell has no adjacents
                 if (grid[coord.Item1, coord.Item2].Adjacent == 0) 
@@ -310,6 +333,7 @@ namespace minesweeper.Models
 
                 // Uncover cell
                 grid[coord.Item1, coord.Item2].UncoverByLogic();
+                numUncovered++;
 
                 // If this cell has no adjacents
                 if (grid[coord.Item1, coord.Item2].Adjacent == 0)

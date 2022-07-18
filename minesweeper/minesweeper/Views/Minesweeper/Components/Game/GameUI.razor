@@ -60,8 +60,8 @@
 	/// </summary>
 	public GameUI()
 	{
-		// Create new game
-		game = new Game("easy");
+		// Create new game -- stored in game
+		NewGame("easy");
 
 		// Initialize
 		InitializeModes();
@@ -130,6 +130,7 @@
 	{
 		// Assign new game
 		game = new Game(mode);
+		game.GameEnd += HandleGameEnd;
 
 		// Garbage collector
 		GC.Collect(); // Clean up old object
@@ -189,5 +190,15 @@
 
 		if(paused) { HandleUnpause(); }
 		else { timer.StartTimer(); }
+	}
+
+	/// <summary>
+	/// Handle Game End
+	/// </summary>
+	/// <param name="sender"> Sender </param>
+	/// <param name="ge"> Event Args </param>
+	private void HandleGameEnd(object? sender, GameEndEventArgs ge) 
+	{
+		// TODO Deactivate cells and call js alert script
 	}
 }
