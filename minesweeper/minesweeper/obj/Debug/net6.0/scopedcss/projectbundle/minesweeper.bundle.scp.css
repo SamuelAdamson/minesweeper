@@ -176,6 +176,14 @@
         transform: rotate(90deg);
     }
 }
+/* _content/minesweeper/Views/Minesweeper/Components/Modal/Modal.razor.rz.scp.css */
+.Modal[b-4d2f6tt5ma] {
+    display: none;
+}
+
+.Modal.active[b-4d2f6tt5ma] {
+    display: block;
+}
 /* _content/minesweeper/Views/Minesweeper/Components/Timer/TimerUI.razor.rz.scp.css */
 h3.display-6.time[b-8rv6fu0jg0] {
     padding-left: 0;

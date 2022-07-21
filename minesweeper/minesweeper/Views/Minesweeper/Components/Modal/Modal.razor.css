@@ -1,0 +1,7 @@
+﻿.Modal {
+    display: none;
+}
+
+.Modal.active {
+    display: block;
+}

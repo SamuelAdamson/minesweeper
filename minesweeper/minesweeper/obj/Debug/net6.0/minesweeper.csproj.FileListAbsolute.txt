@@ -29,3 +29,5 @@ D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Game\GameUI.razor.rz.scp.css
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Grid\GridUI.razor.rz.scp.css
 D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Timer\TimerUI.razor.rz.scp.css
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\minesweeper.csproj.ResolveComReference.cache
+D:\projects\minesweeper\minesweeper\minesweeper\obj\Debug\net6.0\scopedcss\Views\Minesweeper\Components\Modal\Modal.razor.rz.scp.css

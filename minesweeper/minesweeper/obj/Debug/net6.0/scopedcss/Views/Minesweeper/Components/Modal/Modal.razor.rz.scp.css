@@ -1,0 +1,7 @@
+.Modal[b-4d2f6tt5ma] {
+    display: none;
+}
+
+.Modal.active[b-4d2f6tt5ma] {
+    display: block;
+}

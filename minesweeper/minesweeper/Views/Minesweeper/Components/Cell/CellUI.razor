@@ -38,7 +38,7 @@
 	/// <param name="args"></param>
 	private void HandleMouseUp(MouseEventArgs args)
 	{
-		if(Cell_.Covered) // First ensure that button is covered
+		if(Cell_.Active) // First ensure that cell is active
 		{
 			if(args.Button == 0) // Left Click
 			{

@@ -12,6 +12,7 @@ namespace minesweeper.Models
         bool mine; // Is this cell a mine
         bool covered; // Is the cell covered
         bool flagged; // Is the cell flagged
+        bool active; // Is the cell active
         int adjacent; // Number of adjacent mines
         string adjacentStr; // Number of adjacent mines as string
         int row, col; // Coordinates of cell in grid
@@ -35,6 +36,7 @@ namespace minesweeper.Models
             mine = false;
             covered = true;
             flagged = false;
+            active = true;
 			adjacent = 0;
             _stored = false;
             SetAdjacentString();
@@ -45,6 +47,7 @@ namespace minesweeper.Models
         public int Adjacent { get => adjacent; set => adjacent = value; }
         public bool Covered { get => covered; }
         public bool Flagged { get => flagged; }
+        public bool Active { get => active; set => active = value; }
         public string AdjacentStr { get => adjacentStr; }
         public int Row { get => row; }
         public int Col { get => col; }
@@ -81,6 +84,7 @@ namespace minesweeper.Models
         public void UncoverByUser()
         {
             covered = false;
+            active = !(adjacent == 0);
             RaiseUncoverByUser(); // This event hits Game Logic
         }
 
@@ -90,6 +94,7 @@ namespace minesweeper.Models
         public void UncoverByLogic()
         {
             covered = false;
+            active = !(adjacent == 0);
             RaiseUncoverByLogic(); // This event hits CellUI
         }
 

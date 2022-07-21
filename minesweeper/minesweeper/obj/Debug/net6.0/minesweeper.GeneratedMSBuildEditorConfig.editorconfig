@@ -31,6 +31,10 @@ build_metadata.AdditionalFiles.CssScope = b-qbuzaxtm33
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xHcmlkXEdyaWRVSS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-ty2ej5xzox
 
+[D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/Modal/Modal.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xNb2RhbFxNb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4d2f6tt5ma
+
 [D:/projects/minesweeper/minesweeper/minesweeper/Views/Minesweeper/Components/Timer/TimerUI.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluZXN3ZWVwZXJcQ29tcG9uZW50c1xUaW1lclxUaW1lclVJLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-8rv6fu0jg0

@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="{d3295d87-d604-11d4-a704-00c04fa137e4}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>10</VersionMajor>
+      <Guid>d3295d87-d604-11d4-a704-00c04fa137e4</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\lib\font\" />
   </ItemGroup>
 

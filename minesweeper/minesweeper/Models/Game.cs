@@ -264,14 +264,37 @@ namespace minesweeper.Models
             }
         }
 
+        /// <summary>
+        /// Rais Game End Event
+        /// </summary>
+        /// <param name="win"> Game Win Result </param>
         protected virtual void RaiseGameEnd(bool win)
         {
+            System.Diagnostics.Debug.WriteLine($"uncoverd: {numUncovered}, safe: {numSafe}");
             // Set message based on win
             string message = win ?
                 "you have successfully uncovered all safe squares" : "you have uncovered a mine";
 
+            // Deactivate cells
+            DeactivateCells();
+
             // Invoke game end
             GameEnd?.Invoke(this, new GameEndEventArgs(message, win));
+        }
+
+        /// <summary>
+        /// Deactivate all cells
+        /// </summary>
+        private void DeactivateCells()
+        {
+            // Iterate through grid and set active to false
+            for (int i = 0; i < nRows; i++)
+            {
+                for (int j = 0; j < nCols; j++)
+                {
+                    grid[i, j].Active = false;
+                }
+            }
         }
 
         /// <summary>
@@ -281,16 +304,21 @@ namespace minesweeper.Models
         /// <param name="source"></param>
         private void BreadthFirstSearch(Tuple<int,int> source)
         {
+            // Enqueue each starting coord
+            List<Tuple<int,int>> adjacents = GetAdjacentCoords(source);
+            foreach(Tuple<int,int> adj in adjacents) { grid[adj.Item1, adj.Item2].Stored = true; }
+
             // Queue
             // O(1) enqueue-ing and dequeue-ing
-            Queue<Tuple<int, int>> queue = new Queue<Tuple<int, int>>(
-                GetAdjacentCoords(source)); // Enqueue cells adjacent to source
+            Queue<Tuple<int, int>> queue = new Queue<Tuple<int, int>>(adjacents);
 
             while (queue.Any()) // Run while queue is not empty
 			{
 				// Dequeue current coordinate -- store and remove element from front of queue
 				Tuple<int,int> coord = queue.Dequeue();
                 grid[coord.Item1, coord.Item2].Stored = false;
+
+                System.Diagnostics.Debug.WriteLine($"{coord.Item1}, {coord.Item2}");
 
                 // Uncover cell
                 grid[coord.Item1, coord.Item2].UncoverByLogic();
@@ -303,7 +331,7 @@ namespace minesweeper.Models
                     // NOTE - Get adjacent only includes covered cells, so we don't check here
                     foreach (Tuple<int, int> adj in GetAdjacentCoords(coord))
                     {
-                        if (!grid[adj.Item1, adj.Item2].Stored)  // No double queueing
+                        if (!grid[adj.Item1, adj.Item2].Stored) // Avoid queueing multiple times
                         {
                             // Add to queue
                             queue.Enqueue(adj);
@@ -321,9 +349,12 @@ namespace minesweeper.Models
         /// <param name="source"></param>
         private void DepthFirstSearch(Tuple<int,int> source)
         {
+            // Store each starting coord
+            List<Tuple<int, int>> adjacents = GetAdjacentCoords(source);
+            foreach (Tuple<int, int> adj in adjacents) { grid[adj.Item1, adj.Item2].Stored = true; }
+
             // Stack
-            Stack<Tuple<int, int>> stack = new Stack<Tuple<int, int>>(
-                GetAdjacentCoords(source)); // Store adjacent coordinates in stack
+            Stack<Tuple<int, int>> stack = new Stack<Tuple<int, int>>(adjacents);
 
             while(stack.Any())
             {

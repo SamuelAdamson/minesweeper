@@ -8,6 +8,7 @@
 @using minesweeper.Models.CustomEventArgs;
 @using minesweeper.Views.Minesweeper.Components.Grid;
 @using minesweeper.Views.Minesweeper.Components.Timer;
+@using minesweeper.Views.Minesweeper.Components.Modal;
 
 <div class="GameUI">
 	<!-- Mode selection -->
@@ -32,6 +33,8 @@
 		</div>
 	</div>
 
+	<!-- Game End Modal -->
+	<Modal @ref="modal" />
 </div>
 
 @code {
@@ -49,9 +52,10 @@
 	Mode selectedMode;
 
 
-	// Grid, Timer, and Game reference
+	// Grid, Timer, Modal, and Game reference
 	GridUI grid;
 	TimerUI timer;
+	Modal modal;
 	Game game;
 
 
@@ -192,13 +196,9 @@
 		else { timer.StartTimer(); }
 	}
 
-	/// <summary>
-	/// Handle Game End
-	/// </summary>
-	/// <param name="sender"> Sender </param>
-	/// <param name="ge"> Event Args </param>
-	private void HandleGameEnd(object? sender, GameEndEventArgs ge) 
+
+	private void HandleGameEnd(object sender, GameEndEventArgs ge) 
 	{
-		// TODO Deactivate cells and call js alert script
+		
 	}
 }
